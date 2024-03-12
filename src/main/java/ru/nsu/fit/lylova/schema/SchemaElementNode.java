@@ -1,13 +1,13 @@
-package ru.nsu.fit.lylova.data.node;
+package ru.nsu.fit.lylova.schema;
+
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ElementNode implements Node {
-    private final ArrayList<Attribute> attributes = new ArrayList<>();
+public class SchemaElementNode extends SchemaNode {
+    private final ArrayList<SchemaNode> childNodes = new ArrayList<>();
+    private final ArrayList<SchemaAttribute> attributes = new ArrayList<>();
     private String name;
-    private final ArrayList<Node> childNodes = new ArrayList<>();
-
     @Override
     public boolean isValue() {
         return false;
@@ -23,18 +23,17 @@ public class ElementNode implements Node {
     }
 
 
-    public Node getChild(int index) {
+    public SchemaNode getChild(int index) {
         return childNodes.get(index);
     }
 
 
-    public Collection<Attribute> getAttributes() {
+    public Collection<SchemaAttribute> getAttributes() {
         return attributes;
     }
 
-
-    public Attribute getAttributeByName(String name) {
-        for (Attribute attribute : attributes) {
+    public SchemaAttribute getAttributeByName(String name) {
+        for (SchemaAttribute attribute : attributes) {
             if (attribute.getName().equals(name)) {
                 return attribute;
             }
@@ -42,7 +41,7 @@ public class ElementNode implements Node {
         return null;
     }
 
-    public ElementNode addChildNode(Node node) {
+    public SchemaElementNode addChildNode(SchemaNode node) {
         if (node == null) {
             throw new NullPointerException("parameter node must not be null");
         }
@@ -50,7 +49,7 @@ public class ElementNode implements Node {
         return this;
     }
 
-    public ElementNode removeChildNode(Node node) {
+    public SchemaElementNode removeChildNode(SchemaNode node) {
         if (node == null) {
             throw new NullPointerException("parameter node must not be null");
         }
@@ -58,7 +57,7 @@ public class ElementNode implements Node {
         return this;
     }
 
-    public ElementNode setName(String name) {
+    public SchemaElementNode setName(String name) {
         if (name == null) {
             throw new NullPointerException("parameter name must not be null");
         }
@@ -70,11 +69,12 @@ public class ElementNode implements Node {
         return this.name;
     }
 
-    public ElementNode addAttribute(Attribute attribute) {
+    public SchemaElementNode addAttribute(SchemaAttribute attribute) {
         if (attribute == null) {
             throw new NullPointerException("parameter attribute must not be null");
         }
         attributes.add(attribute);
         return this;
     }
+
 }

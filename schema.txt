@@ -16,18 +16,26 @@
     (
         element
         {
-            name "school",
-            minOccurs "0",
-            maxOccurs "unbounded"
+            name "district"
         }
         (attribute {name "name", use "required"})
+        (attribute {name "city", use "optional"})
         (
             element
             {
-                type "grade_type",
+                name "school",
                 minOccurs "0",
-                maxOccurs "12"
+                maxOccurs "unbounded"
             }
+            (attribute {name "name", use "required"})
+            (
+                element
+                {
+                    type "grade_type",
+                    minOccurs "0",
+                    maxOccurs "12"
+                }
+            )
         )
     )
 )

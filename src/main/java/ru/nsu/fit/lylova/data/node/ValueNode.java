@@ -6,6 +6,7 @@ public class ValueNode implements Node {
     public Value getValue() {
         return value;
     }
+
     public ValueNode setValue(Value value) {
         this.value = value;
         return this;
