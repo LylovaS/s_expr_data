@@ -18,20 +18,17 @@ public class ElementNode implements Node {
         return true;
     }
 
-    public int getChildNumber() {
+    public int getChildrenNumber() {
         return childNodes.size();
     }
-
 
     public Node getChild(int index) {
         return childNodes.get(index);
     }
 
-
     public Collection<Attribute> getAttributes() {
         return attributes;
     }
-
 
     public Attribute getAttributeByName(String name) {
         for (Attribute attribute : attributes) {

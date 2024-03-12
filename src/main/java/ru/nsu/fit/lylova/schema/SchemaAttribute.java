@@ -6,10 +6,11 @@ public class SchemaAttribute {
     private String name = null;
     private AttributeUse use = null;
 
-    SchemaAttribute(String name) {
+    public SchemaAttribute(String name) {
         this.name = name;
+        this.use = AttributeUse.OPTIONAL;
     }
-    SchemaAttribute(String name, AttributeUse use) {
+    public SchemaAttribute(String name, AttributeUse use) {
         this.name = name;
         this.use = use;
     }

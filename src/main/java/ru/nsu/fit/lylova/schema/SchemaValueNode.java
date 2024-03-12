@@ -13,8 +13,13 @@ public class SchemaValueNode extends SchemaNode {
         return false;
     }
 
-    public void setValueType(ValueType type) {
+    public SchemaValueNode setValueType(ValueType type) {
         this.type = type;
+        return this;
+    }
+
+    public ValueType getType() {
+        return type;
     }
 }
 
