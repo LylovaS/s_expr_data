@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+    id 'antlr'
+}
+
+group = 'ru.nsu.fit.lylova'
+group = 'antlr'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.antlr:antlr4-runtime:4.9.3'
+    antlr 'org.antlr:antlr4:4.9.3'
+}
+
+generateGrammarSource {
+    maxHeapSize = "128m"
+    arguments += ['-package', 'ru.nsu.fit.lylova', '-visitor', '-listener']
+    outputDirectory = new File("build/generated-src/antlr/main/ru/nsu/fit/lylova".toString())
+}
+compileJava.dependsOn generateGrammarSource
+
+test {
+    useJUnitPlatform()
+}
