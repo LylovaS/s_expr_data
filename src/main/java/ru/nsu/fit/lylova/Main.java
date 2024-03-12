@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import ru.nsu.fit.lylova.data.DataWalker;
 import ru.nsu.fit.lylova.data.node.*;
+import ru.nsu.fit.lylova.schema.*;
 
 import java.io.IOException;
 
@@ -20,12 +21,31 @@ public class Main {
             }
             System.out.print('\n');
             prefix = prefix + "\t";
-            for (int i = 0; i < elementNode.getChildNumber(); ++i) {
+            for (int i = 0; i < elementNode.getChildrenNumber(); ++i) {
                 showTheData(elementNode.getChild(i), prefix);
             }
         } else {
             ValueNode valueNode = (ValueNode) node;
             System.out.println("value " + Value.toString(valueNode.getValue()));
+        }
+    }
+
+    static private void showTheData(SchemaNode node, String prefix) {
+        System.out.print(prefix);
+        if (node.isElement()) {
+            SchemaElementNode schemaElementNode = (SchemaElementNode) node;
+            System.out.print("element " + schemaElementNode.getName());
+            for (SchemaAttribute attr : schemaElementNode.getAttributes()) {
+                System.out.print(" " + "attr" + "=" + attr.getName());
+            }
+            System.out.print('\n');
+            prefix = prefix + "\t";
+            for (int i = 0; i < schemaElementNode.getChildrenNumber(); ++i) {
+                showTheData(schemaElementNode.getChild(i), prefix);
+            }
+        } else {
+            SchemaValueNode schemaValueNode = (SchemaValueNode) node;
+            System.out.print("value " + schemaValueNode.getType().toString());
         }
     }
 
@@ -40,5 +60,9 @@ public class Main {
         walker.walk(expressionWalker, tree);
         System.out.println(expressionWalker.getDataNode().isElement());
         showTheData(expressionWalker.getDataNode(), "");
+
+        DataToSchemeTranslator translator = new DataToSchemeTranslator();
+        SchemaElementNode node = (SchemaElementNode) translator.translate(expressionWalker.getDataNode());
+        showTheData(node, "");
     }
 }

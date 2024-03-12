@@ -18,10 +18,9 @@ public class SchemaElementNode extends SchemaNode {
         return true;
     }
 
-    public int getChildNumber() {
+    public int getChildrenNumber() {
         return childNodes.size();
     }
-
 
     public SchemaNode getChild(int index) {
         return childNodes.get(index);
