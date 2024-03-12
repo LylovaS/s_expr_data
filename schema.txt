@@ -1,0 +1,33 @@
+(
+    schema
+    (
+        type {type_name "grade_type",
+              element_name "grade"}
+        (attribute {name "level", use "required"})
+        (
+            value
+            {
+                type "string",
+                minOccurs "1",
+                maxOccurs "unbounded"
+            }
+        )
+    )
+    (
+        element
+        {
+            name "school",
+            minOccurs "0",
+            maxOccurs "unbounded"
+        }
+        (attribute {name "name", use "required"})
+        (
+            element
+            {
+                type "grade_type",
+                minOccurs "0",
+                maxOccurs "12"
+            }
+        )
+    )
+)
