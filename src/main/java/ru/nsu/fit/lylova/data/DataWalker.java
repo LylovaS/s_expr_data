@@ -8,7 +8,7 @@ import java.util.Stack;
 
 public class DataWalker extends DataBaseListener {
     private Node parentNode;
-    private Stack<Node> nodes = new Stack<>();
+    private final Stack<Node> nodes = new Stack<>();
     private Attribute attribute;
 
     private void addNodeInTree(Node node) {
@@ -79,11 +79,23 @@ public class DataWalker extends DataBaseListener {
         this.attribute.setName(ctx.NAME().getText());
     }
 
-    @Override public void enterValue(DataParser.ValueContext ctx) { }
-
-    @Override public void exitValue(DataParser.ValueContext ctx) {
-        this.addNodeInTree(new ValueNode().setValue(new Value().setValue(ctx.getText())));
+    @Override
+    public void enterValue(DataParser.ValueContext ctx) {
     }
+
+    @Override
+    public void exitValue(DataParser.ValueContext ctx) {
+        Value value = new Value();
+        if (ctx.STRING() != null) {
+            value.setValueAsString(ctx.getText());
+        } else if (ctx.INT() != null) {
+            value.setValueAsInteger(Long.parseLong(ctx.getText()));
+        } else if (ctx.DOUBLE() != null) {
+            value.setValueAsDouble(Double.parseDouble(ctx.getText()));
+        }
+        this.addNodeInTree(new ValueNode().setValue(value));
+    }
+
     public Node getDataNode() {
         return parentNode;
     }

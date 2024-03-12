@@ -10,7 +10,7 @@ expr_name: NAME;
 attrs: '{' (attr ',')* attr '}';
 attr: attr_name STRING;
 attr_name: NAME;
-value: STRING | INT | FLOAT;
+value: STRING | INT | DOUBLE;
 
 NAME: [A-Za-z] [A-Za-z0-9_]*;
 
@@ -32,7 +32,7 @@ fragment HEX
 fragment SAFECODEPOINT
     : ~ ["\\\u0000-\u001F]
     ;
-FLOAT
+DOUBLE
     : INT ('.' [0-9]+) EXP?
     ;
 INT

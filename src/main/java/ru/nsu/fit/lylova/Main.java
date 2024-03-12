@@ -5,10 +5,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import ru.nsu.fit.lylova.data.DataWalker;
-import ru.nsu.fit.lylova.data.node.Attribute;
-import ru.nsu.fit.lylova.data.node.ElementNode;
-import ru.nsu.fit.lylova.data.node.Node;
-import ru.nsu.fit.lylova.data.node.ValueNode;
+import ru.nsu.fit.lylova.data.node.*;
 
 import java.io.IOException;
 
@@ -18,7 +15,7 @@ public class Main {
         if (node.isElement()) {
             ElementNode elementNode = (ElementNode) node;
             System.out.print("element " + elementNode.getName());
-            for (Attribute attr: elementNode.getAttributes()) {
+            for (Attribute attr : elementNode.getAttributes()) {
                 System.out.print(" " + attr.getName() + "=" + attr.getValue());
             }
             System.out.print('\n');
@@ -28,7 +25,7 @@ public class Main {
             }
         } else {
             ValueNode valueNode = (ValueNode) node;
-            System.out.println("element " + valueNode.getValue().getValueAsString());
+            System.out.println("value " + Value.toString(valueNode.getValue()));
         }
     }
 
@@ -39,7 +36,7 @@ public class Main {
         DataParser parser = new DataParser(tokens);
         ParseTree tree = parser.calc();
         ParseTreeWalker walker = new ParseTreeWalker();
-        DataWalker expressionWalker =  new DataWalker();
+        DataWalker expressionWalker = new DataWalker();
         walker.walk(expressionWalker, tree);
         System.out.println(expressionWalker.getDataNode().isElement());
         showTheData(expressionWalker.getDataNode(), "");
