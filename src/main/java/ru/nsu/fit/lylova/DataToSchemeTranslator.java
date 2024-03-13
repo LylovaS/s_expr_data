@@ -4,9 +4,10 @@ import ru.nsu.fit.lylova.data.node.Attribute;
 import ru.nsu.fit.lylova.data.node.ElementNode;
 import ru.nsu.fit.lylova.data.node.Node;
 import ru.nsu.fit.lylova.data.node.ValueNode;
-import ru.nsu.fit.lylova.schema.*;
-
-import java.util.HashMap;
+import ru.nsu.fit.lylova.schema.SchemaAttribute;
+import ru.nsu.fit.lylova.schema.SchemaElementNode;
+import ru.nsu.fit.lylova.schema.SchemaNode;
+import ru.nsu.fit.lylova.schema.SchemaValueNode;
 
 public class DataToSchemeTranslator {
     public SchemaNode translate(Node data) {

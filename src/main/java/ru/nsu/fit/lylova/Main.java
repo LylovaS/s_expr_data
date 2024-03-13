@@ -6,7 +6,10 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import ru.nsu.fit.lylova.data.DataWalker;
 import ru.nsu.fit.lylova.data.node.*;
-import ru.nsu.fit.lylova.schema.*;
+import ru.nsu.fit.lylova.schema.SchemaAttribute;
+import ru.nsu.fit.lylova.schema.SchemaElementNode;
+import ru.nsu.fit.lylova.schema.SchemaNode;
+import ru.nsu.fit.lylova.schema.SchemaValueNode;
 
 import java.io.IOException;
 
