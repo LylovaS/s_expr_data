@@ -1,41 +1,14 @@
-(
-    schema
-    (
-        type {type_name "grade_type",
-              element_name "grade"}
+(schema
+    (type {type_name "grade_type", element_name "grade"}
         (attribute {name "level", use "required"})
-        (
-            value
-            {
-                type "string",
-                minOccurs "1",
-                maxOccurs "unbounded"
-            }
-        )
+        (value {type "string", minOccurs "1", maxOccurs "unbounded"})
     )
-    (
-        element
-        {
-            name "district"
-        }
+    (element {name "district"}
         (attribute {name "name", use "required"})
         (attribute {name "city", use "optional"})
-        (
-            element
-            {
-                name "school",
-                minOccurs "0",
-                maxOccurs "unbounded"
-            }
+        (element {name "school", minOccurs "0", maxOccurs "unbounded"}
             (attribute {name "name", use "required"})
-            (
-                element
-                {
-                    type "grade_type",
-                    minOccurs "0",
-                    maxOccurs "12"
-                }
-            )
+            (element {type "grade_type", minOccurs "0", maxOccurs "12"})
         )
     )
 )
