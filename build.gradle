@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'antlr'
+    id 'jacoco'
 }
 
 group = 'ru.nsu.fit.lylova'
@@ -27,4 +28,19 @@ compileJava.dependsOn generateGrammarSource
 
 test {
     useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+    dependsOn test // tests are required to run before generating the report
+
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    "**/Main.class"
+            ])
+        }))
+    }
 }
