@@ -30,7 +30,7 @@ test {
     useJUnitPlatform()
 }
 
-//test.doLast jacocoTestReport.&execute
+test.doLast jacocoTestReport.&execute
 
 jacocoTestReport {
     reports {
