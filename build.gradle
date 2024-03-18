@@ -30,6 +30,8 @@ test {
     useJUnitPlatform()
 }
 
+//test.doLast jacocoTestReport.&execute
+
 jacocoTestReport {
     reports {
         xml.required = true

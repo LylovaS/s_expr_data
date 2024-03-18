@@ -5,8 +5,11 @@ import java.security.InvalidParameterException;
 public abstract class SchemaNode {
     private int minOccurs = 1;
     private int maxOccurs = 1;
+
     public abstract boolean isValue();
+
     public abstract boolean isElement();
+
     public void setOccurs(int minOccurs, int maxOccurs) {
         if (minOccurs > maxOccurs) {
             throw new InvalidParameterException("maxOccurs must be not lower than minOccurs");
