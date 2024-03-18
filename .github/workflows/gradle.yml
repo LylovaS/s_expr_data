@@ -36,7 +36,7 @@ jobs:
           branch: gh-pages
           clean: true
           folder: build/docs/javadoc
-          target-folder: javadoc
+          target-folder: docs
 
   checkstyle:
     runs-on: ubuntu-latest
