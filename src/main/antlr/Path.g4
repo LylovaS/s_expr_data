@@ -20,17 +20,9 @@ relativeLocationPath
 
 step
     : nCName predicate?
-    | abbreviatedStep
-    | '@element'
-    | '@value' value_predicate?
-    ;
-
-value_predicate
-    : '[' value_expr ']'
-    ;
-
-value_expr
-    : '@type' ('=' | '!=') ('string' | 'float' | 'integer')
+    | abbreviatedStep predicate?
+    | '@element' predicate?
+    | '@value' predicate?
     ;
 
 predicate
