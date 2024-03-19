@@ -3,17 +3,17 @@ package ru.nsu.fit.lylova.data.node;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ElementNode implements Node {
+public class ElementNode extends Node {
     private final ArrayList<Attribute> attributes = new ArrayList<>();
     private String name;
     private final ArrayList<Node> childNodes = new ArrayList<>();
 
-    @Override
+
     public boolean isValue() {
         return false;
     }
 
-    @Override
+
     public boolean isElement() {
         return true;
     }
@@ -43,7 +43,11 @@ public class ElementNode implements Node {
         if (node == null) {
             throw new NullPointerException("parameter node must not be null");
         }
+        if (node.getParent() != null) {
+            throw new IllegalArgumentException("node must not have an parent before it is added");
+        }
         childNodes.add(node);
+        node.setParent(this);
         return this;
     }
 
@@ -51,6 +55,10 @@ public class ElementNode implements Node {
         if (node == null) {
             throw new NullPointerException("parameter node must not be null");
         }
+        if (node.getParent() != this) {
+            return this;
+        }
+        node.setParent(null);
         childNodes.remove(node);
         return this;
     }

@@ -1,9 +1,16 @@
 package ru.nsu.fit.lylova.data.node;
 
 //TODO добавить для каждой вершины какая вершина является предком. Понадобится для xpath
-public interface Node {
+public abstract class Node {
+    private Node parent = null;
+    public abstract boolean isValue();
 
-    boolean isValue();
+    public abstract boolean isElement();
 
-    boolean isElement();
+    public Node getParent() {
+        return parent;
+    }
+    void setParent(Node parent) {
+        this.parent = parent;
+    }
 }
