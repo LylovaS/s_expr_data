@@ -47,7 +47,7 @@ public class DataWalker extends DataBaseListener {
 
     @Override
     public void exitExpr_name(DataParser.Expr_nameContext ctx) {
-        this.addNodeInTree(new ElementNode().setName(ctx.getText()));
+        this.addNodeInTree(new ElementNode(ctx.getText()));
     }
 
     @Override

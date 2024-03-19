@@ -28,6 +28,26 @@ public class Step {
         this.elementName = elementName;
     }
 
+    public AxisType getAxisType() {
+        return axisType;
+    }
+
+    public Step setAxisType(AxisType type) {
+        axisType = type;
+        elementName = null;
+        return this;
+    }
+
+    public Step setElementName(String elementName) {
+        this.elementName = elementName;
+        axisType = null;
+        return this;
+    }
+
+    public String getElementName() {
+        return elementName;
+    }
+
     public Step setPredicate(String attributeName, String attributeValue, PredicateType type) {
         predicate = new Predicate(attributeName, attributeValue, type);
         return this;

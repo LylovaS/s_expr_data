@@ -6,8 +6,11 @@ import java.util.Collection;
 public class ElementNode extends Node {
     private final ArrayList<Attribute> attributes = new ArrayList<>();
     private String name;
-    private final ArrayList<Node> childNodes = new ArrayList<>();
+    protected final ArrayList<Node> childNodes = new ArrayList<>();
 
+    public ElementNode(String name) {
+        this.name = name;
+    }
 
     public boolean isValue() {
         return false;
@@ -44,7 +47,7 @@ public class ElementNode extends Node {
             throw new NullPointerException("parameter node must not be null");
         }
         if (node.getParent() != null) {
-            throw new IllegalArgumentException("node must not have an parent before it is added");
+            throw new IllegalArgumentException("node must not have parent before it is added");
         }
         childNodes.add(node);
         node.setParent(this);
