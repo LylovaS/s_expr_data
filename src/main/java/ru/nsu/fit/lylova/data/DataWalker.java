@@ -6,7 +6,7 @@ import ru.nsu.fit.lylova.data.node.*;
 
 import java.util.Stack;
 
-public class DataWalker extends DataBaseListener {
+class DataWalker extends DataBaseListener {
     private Node parentNode;
     private final Stack<Node> nodes = new Stack<>();
     private Attribute attribute;
