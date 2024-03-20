@@ -1,0 +1,7 @@
+(element {id "1"}
+    (element {id "2"}
+        (element {id "3"} "Some string" 128)
+        (element {id "4"} 3.1415 "Hello")
+    )
+    (element {id "5"} 23 137)
+)

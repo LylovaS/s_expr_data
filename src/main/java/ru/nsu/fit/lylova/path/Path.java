@@ -23,8 +23,9 @@ public class Path {
         return this;
     }
 
-    public void addStep(Step step) {
+    public Path addStep(Step step) {
         steps.add(step);
+        return this;
     }
 
     public List<Step> getSteps() {
@@ -36,6 +37,7 @@ public class Path {
     }
 
     public Collection<Node> evaluate(Node contextNode) {
+        Node imaginaryNode = null;
         if (contextNode == null) {
             throw new NullPointerException("parameter contextNode must not be null");
         }
@@ -48,7 +50,8 @@ public class Path {
                 result.add(contextNode);
             }
             case ABSOLUTE -> {
-                result.add(new DocumentNode("documentNode").addChildNode(findRootOfData(contextNode)));
+                imaginaryNode = new DocumentNode("documentNode").addChildNode(findRootOfData(contextNode));
+                result.add(imaginaryNode);
             }
         }
         for (Step step : steps) {
@@ -73,7 +76,9 @@ public class Path {
                         .collect(Collectors.toSet());
             }
         }
-        return result;
+
+        Node finalImaginaryNode = imaginaryNode;
+        return result.stream().filter(node -> (node != finalImaginaryNode)).collect(Collectors.toSet());
     }
 
 
