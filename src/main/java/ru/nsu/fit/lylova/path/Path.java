@@ -36,8 +36,9 @@ public class Path {
         steps.remove(index);
     }
 
-    public Collection<Node> evaluate(Node contextNode) {
+    public Collection<Node> evaluate(Context context) {
         Node imaginaryNode = null;
+        Node contextNode = context.getContextNode();
         if (contextNode == null) {
             throw new NullPointerException("parameter contextNode must not be null");
         }
@@ -69,10 +70,10 @@ public class Path {
             }
             result = nodesAfterAxis;
 
-            if (step.getPredicate() != null) {
+            if (step.getRequirement() != null) {
                 result = result.stream()
-                        .filter(node -> step.getPredicate()
-                                .validateNode(node))
+                        .filter(node -> step.getRequirement()
+                                .validateNode(node, context))
                         .collect(Collectors.toSet());
             }
         }

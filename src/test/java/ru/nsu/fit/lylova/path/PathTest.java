@@ -17,10 +17,10 @@ class PathTest {
     @Test
     void evaluate() throws IOException {
         Node node = DataReader.parseDataFromReader(new FileReader("src/test/resources/data1.txt"));
-
+        Context context = new Context(node);
         // path="element"
         Path path = new Path(PathType.ABSOLUTE).addStep(new Step(StepTransition.JUST_CURRENT, "element"));
-        Collection<Node> res = path.evaluate(node);
+        Collection<Node> res = path.evaluate(context);
         assertEquals(1, res.size());
         for (Node i : res) {
             assertTrue(i.isElement());
@@ -28,7 +28,7 @@ class PathTest {
         }
 
         path = path.setType(PathType.RELATIVE);
-        res = path.evaluate(node);
+        res = path.evaluate(context);
         List<String> correctResult = new LinkedList<>(Arrays.asList("\"2\"", "\"5\""));
         assertEquals(2, res.size());
         for (Node i : res) {

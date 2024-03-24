@@ -35,7 +35,21 @@ abbreviatedStep
     ;
 
 expr
-    : '@' nCName ('=' | '!=') STRING
+    : equal_pred_expr
+    | custom_predicat_expr
+    ;
+
+equal_pred_expr:
+    attribute_expr ('=' | '!=') attribute_expr
+    ;
+
+custom_predicat_expr:
+    nCName '('  attribute_expr ',' attribute_expr ')'
+    ;
+
+attribute_expr:
+    '@' nCName
+    | STRING
     ;
 
 nCName
