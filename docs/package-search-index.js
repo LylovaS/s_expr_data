@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.fit.lylova"},{"l":"ru.nsu.fit.lylova.data"},{"l":"ru.nsu.fit.lylova.data.node"},{"l":"ru.nsu.fit.lylova.schema"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.fit.lylova"},{"l":"ru.nsu.fit.lylova.data"},{"l":"ru.nsu.fit.lylova.data.node"},{"l":"ru.nsu.fit.lylova.path"},{"l":"ru.nsu.fit.lylova.schema"}];updateSearchResults();
