@@ -20,7 +20,9 @@ relativeLocationPath
 
 step
     : nCName predicate?
-    | abbreviatedStep
+    | abbreviatedStep predicate?
+    | '@element' predicate?
+    | '@value' predicate?
     ;
 
 predicate

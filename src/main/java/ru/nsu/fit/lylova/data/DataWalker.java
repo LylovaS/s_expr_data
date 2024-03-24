@@ -6,7 +6,7 @@ import ru.nsu.fit.lylova.data.node.*;
 
 import java.util.Stack;
 
-public class DataWalker extends DataBaseListener {
+class DataWalker extends DataBaseListener {
     private Node parentNode;
     private final Stack<Node> nodes = new Stack<>();
     private Attribute attribute;
@@ -47,7 +47,7 @@ public class DataWalker extends DataBaseListener {
 
     @Override
     public void exitExpr_name(DataParser.Expr_nameContext ctx) {
-        this.addNodeInTree(new ElementNode().setName(ctx.getText()));
+        this.addNodeInTree(new ElementNode(ctx.getText()));
     }
 
     @Override

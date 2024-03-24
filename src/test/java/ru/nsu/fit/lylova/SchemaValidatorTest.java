@@ -16,7 +16,7 @@ class SchemaValidatorTest {
     void validate() {
         ValueNode v1 = new ValueNode().setValue(new Value().setValueAsInteger(107));
         ValueNode v2 = new ValueNode().setValue(new Value().setValueAsDouble(1.30));
-        ElementNode elementNode = new ElementNode().addChildNode(v1).addChildNode(v2).setName("kek");
+        ElementNode elementNode = new ElementNode("kek").addChildNode(v1).addChildNode(v2);
 
         SchemaValueNode v3 = new SchemaValueNode().setValueType(ValueType.INT);
         SchemaValueNode v4 = new SchemaValueNode().setValueType(ValueType.DOUBLE);

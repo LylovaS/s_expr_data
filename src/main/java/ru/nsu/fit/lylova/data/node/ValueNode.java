@@ -1,6 +1,6 @@
 package ru.nsu.fit.lylova.data.node;
 
-public class ValueNode implements Node {
+public class ValueNode extends Node {
     Value value = null;
 
     public Value getValue() {
@@ -12,12 +12,12 @@ public class ValueNode implements Node {
         return this;
     }
 
-    @Override
+
     public boolean isValue() {
         return true;
     }
 
-    @Override
+
     public boolean isElement() {
         return false;
     }
