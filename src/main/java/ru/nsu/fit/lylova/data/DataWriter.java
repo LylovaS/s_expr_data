@@ -18,7 +18,8 @@ public class DataWriter {
         if (data == null) {
             throw new NullPointerException("Data cannot be null.");
         }
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+        String format = ".txt";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename + format));
 
         write(data, writer, "");
         writer.close();
@@ -42,7 +43,6 @@ public class DataWriter {
                     break;
                 }
             }
-            //writer.newLine();
         } else if (node.isElement()) {
             ElementNode elementNode = (ElementNode) node;
             writer.write("(" + elementNode.getName());

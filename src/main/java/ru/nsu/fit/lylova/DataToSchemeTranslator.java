@@ -8,48 +8,62 @@ import ru.nsu.fit.lylova.schema.*;
 import java.util.HashMap;
 
 public class DataToSchemeTranslator {
-    private SchemaElementNode schema;
-    private final HashMap<String, SchemaElementNode> types = new HashMap<>();
+    private static final HashMap<String, SchemaElementNode> types = new HashMap<>();
 
-    public void translateNode(Node node, SchemaElementNode root) {
-        ElementNode elementNode = (ElementNode) node;
+    public static SchemaNode translate(Node data) {
+        if (data.isValue()) {
+            throw new IllegalArgumentException("Cannot translate value node into schema.");
+        }
+        ElementNode elementNode = (ElementNode) data;
+        SchemaElementNode schema = new SchemaElementNode().setName("schema");
+        for (int i = 0; i < elementNode.getChildrenNumber(); i++) {
+            Node child = elementNode.getChild(i);
+            translateNode((ElementNode) child, schema);
+        }
+        return schema;
+    }
+
+    private static void translateNode(ElementNode elementNode, SchemaElementNode root) {
+        if (elementNode == null) {
+            throw new NullPointerException("Data cannot be null.");
+        }
         switch (elementNode.getName()) {
-            case "schema": {
-                schema = new SchemaElementNode().setName("schema");
-                for (int i = 0; i < elementNode.getChildrenNumber(); i++) {
-                    Node child = elementNode.getChild(i);
-                    translateNode((ElementNode) child, schema);
-                }
-                break;
-            }
             case "element": {
                 SchemaElementNode schemaElementNode = new SchemaElementNode();
-                Attribute attribute = elementNode.getAttributeByName("name");
-                if (attribute == null) {
-                    throw new RuntimeException("An element must have a \"name\" argument.");
-                }
-                schemaElementNode.setName(attribute.getValue());
 
-                attribute = elementNode.getAttributeByName("type");
+                Attribute attribute = elementNode.getAttributeByName("type");
                 if (attribute != null) {
-                    SchemaElementNode type = types.get(attribute.getValue());
+                    String typeName = attribute.getValue();
+                    SchemaElementNode type = types.get(typeName);
                     if (type == null) {
                         throw new RuntimeException("Type " + attribute.getValue() + " hasn't been declared.");
                     }
                     schemaElementNode = type;
+                    attribute = elementNode.getAttributeByName("name");
+                    if (attribute != null && !attribute.getValue().equals(type.getName())) {
+                        throw new RuntimeException("Name of the element is already defined in type " + typeName);
+                    }
+                } else {
+                    attribute = elementNode.getAttributeByName("name");
+                    if (attribute == null) {
+                        throw new RuntimeException("An element must have \"name\" or \"type\" argument.");
+                    }
+                    schemaElementNode.setName(attribute.getValue());
                 }
+
 
                 attribute = elementNode.getAttributeByName("minOccurs");
                 if (attribute != null) {
                     int minOccurs = Integer.parseInt(attribute.getValue().replaceAll("\"", ""));
                     attribute = elementNode.getAttributeByName("maxOccurs");
                     if (attribute != null) {
-                        if (attribute.getValue().equals("\"unbounded\"")) {
+                        String value = attribute.getValue().replaceAll("\"", "");
+                        if (value.equals("unbounded")) {
                             schemaElementNode.setMinOccursWithMaxOccursUnbounded(minOccurs);
                         } else {
                             schemaElementNode.setOccurs(
                                     minOccurs,
-                                    Integer.parseInt(attribute.getValue().replaceAll("\"", "")));
+                                    Integer.parseInt(value));
                         }
                     } else {
                         throw new RuntimeException("Both minOccurs and maxOccurs must be specified."); //??
@@ -58,7 +72,10 @@ public class DataToSchemeTranslator {
 
                 for (int i = 0; i < elementNode.getChildrenNumber(); i++) {
                     Node child = elementNode.getChild(i);
-                    translateNode(child, schemaElementNode);
+                    if (child.isValue()) {
+                        throw new RuntimeException("Cannot translate value node into schema.");
+                    }
+                    translateNode((ElementNode) child, schemaElementNode);
                 }
                 root.addChildNode(schemaElementNode);
                 break;
@@ -116,12 +133,13 @@ public class DataToSchemeTranslator {
                         int minOccurs = Integer.parseInt(attribute.getValue().replaceAll("\"", ""));
                         attribute = elementNode.getAttributeByName("maxOccurs");
                         if (attribute != null) {
-                            if (attribute.getValue().equals("\"unbounded\"")) {
+                            String value = attribute.getValue().replaceAll("\"", "");
+                            if (value.equals("unbounded")) {
                                 schemaValueNode.setMinOccursWithMaxOccursUnbounded(minOccurs);
                             } else {
                                 schemaValueNode.setOccurs(
                                         minOccurs,
-                                        Integer.parseInt(attribute.getValue().replaceAll("\"", "")));
+                                        Integer.parseInt(value));
                             }
                         } else {
                             throw new RuntimeException("Both minOccurs and maxOccurs must be specified.");
@@ -156,9 +174,5 @@ public class DataToSchemeTranslator {
                 break;
             }
         }
-    }
-
-    public SchemaElementNode getSchema() {
-        return schema;
     }
 }

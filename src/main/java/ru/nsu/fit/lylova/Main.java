@@ -1,10 +1,7 @@
 package ru.nsu.fit.lylova;
 
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import ru.nsu.fit.lylova.data.DataReader;
+import ru.nsu.fit.lylova.data.DataWriter;
 import ru.nsu.fit.lylova.data.node.*;
 import ru.nsu.fit.lylova.schema.SchemaAttribute;
 import ru.nsu.fit.lylova.schema.SchemaElementNode;
@@ -39,8 +36,11 @@ public class Main {
         if (node.isElement()) {
             SchemaElementNode schemaElementNode = (SchemaElementNode) node;
             System.out.print("element " + schemaElementNode.getName());
+            System.out.print(" minOccurs=" + schemaElementNode.getMinOccurs());
+            System.out.print(" maxOccurs=" + schemaElementNode.getMaxOccurs());
             for (SchemaAttribute attr : schemaElementNode.getAttributes()) {
-                System.out.print(" " + "attr" + "=" + attr.getName());
+                System.out.print(" [attr=" + attr.getName());
+                System.out.print(" use=" + attr.getUse().name() + "] ");
             }
             System.out.print('\n');
             prefix = prefix + "\t";
@@ -49,7 +49,9 @@ public class Main {
             }
         } else {
             SchemaValueNode schemaValueNode = (SchemaValueNode) node;
-            System.out.print("value " + schemaValueNode.getType().toString());
+            System.out.print("value " + schemaValueNode.getType().name());
+            System.out.print(" minOccurs=" + schemaValueNode.getMinOccurs());
+            System.out.print(" maxOccurs=" + schemaValueNode.getMaxOccurs());
         }
     }
 
@@ -59,6 +61,8 @@ public class Main {
 
         System.out.println(dataNode.isElement());
         showTheData(dataNode, "");
+
+        DataWriter.writeToFile("dataWrite", dataNode);
 
 //        DataToSchemeTranslator translator = new DataToSchemeTranslator();
 //        SchemaElementNode node = (SchemaElementNode) translator.translate(expressionWalker.getDataNode());
