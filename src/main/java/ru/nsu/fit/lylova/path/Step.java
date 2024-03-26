@@ -19,11 +19,11 @@ public class Step {
     public Step(StepTransition transition, AxisType axisType) {
         this.transition = transition;
         this.axisType = axisType;
-        elementName = null;
+        this.elementName = null;
     }
 
     public Step(StepTransition transition, String elementName) {
-        this.elementName = elementName;
+        this.transition = transition;
         this.axisType = null;
         this.elementName = elementName;
     }

@@ -1,5 +1,11 @@
 package ru.nsu.fit.lylova.path;
 
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import ru.nsu.fit.lylova.PathLexer;
+import ru.nsu.fit.lylova.PathParser;
 import ru.nsu.fit.lylova.data.node.ElementNode;
 import ru.nsu.fit.lylova.data.node.Node;
 
@@ -178,5 +184,16 @@ public class Path {
             node = node.getParent();
         }
         return node;
+    }
+
+    public static Path compile(String pathAsString) throws Exception {
+        PathLexer lexer = new PathLexer(CharStreams.fromString(pathAsString));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        PathParser parser = new PathParser(tokens);
+        ParseTree tree = parser.calc();
+        ParseTreeWalker walker = new ParseTreeWalker();
+        PathWalker pathWalker = new PathWalker();
+        walker.walk(pathWalker, tree);
+        return pathWalker.getPath();
     }
 }
