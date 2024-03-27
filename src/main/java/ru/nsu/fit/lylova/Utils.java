@@ -1,8 +1,8 @@
-package ru.nsu.fit.lylova.data;
+package ru.nsu.fit.lylova;
 
 
-class Utils {
-    static String processEscapingCharsFromInput(String s) {
+public class Utils {
+    public static String processEscapingCharsFromInput(String s) {
         StringBuilder result = new StringBuilder();
         for (int i = 1; i + 1 < s.length(); ++i) {
             if (s.charAt(i) == '\\') {
@@ -41,7 +41,7 @@ class Utils {
         return result.toString();
     }
 
-    static String processEscapingCharsToInput(String s) {
+    public static String processEscapingCharsToInput(String s) {
         StringBuilder result = new StringBuilder();
         result.append("\"");
         for (char c : s.toCharArray()) {
