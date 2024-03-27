@@ -1,12 +1,15 @@
 package ru.nsu.fit.lylova.data;
 
-import ru.nsu.fit.lylova.DataBaseListener;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.tree.TerminalNode;
+import ru.nsu.fit.lylova.DataListener;
 import ru.nsu.fit.lylova.DataParser;
 import ru.nsu.fit.lylova.data.node.*;
 
 import java.util.Stack;
 
-class DataWalker extends DataBaseListener {
+class DataWalker implements DataListener {
     private Node parentNode;
     private final Stack<Node> nodes = new Stack<>();
     private Attribute attribute;
@@ -65,7 +68,7 @@ class DataWalker extends DataBaseListener {
 
     @Override
     public void exitAttr(DataParser.AttrContext ctx) {
-        this.attribute.setValue(ctx.STRING().getText());
+        this.attribute.setValue(Utils.processEscapingCharsFromInput(ctx.STRING().getText()));
         ((ElementNode) this.nodes.lastElement()).addAttribute(attribute);
         this.attribute = null;
     }
@@ -87,7 +90,7 @@ class DataWalker extends DataBaseListener {
     public void exitValue(DataParser.ValueContext ctx) {
         Value value = new Value();
         if (ctx.STRING() != null) {
-            value.setValueAsString(ctx.getText());
+            value.setValueAsString(Utils.processEscapingCharsFromInput(ctx.getText()));
         } else if (ctx.INT() != null) {
             value.setValueAsInteger(Long.parseLong(ctx.getText()));
         } else if (ctx.DOUBLE() != null) {
@@ -98,5 +101,25 @@ class DataWalker extends DataBaseListener {
 
     public Node getDataNode() {
         return parentNode;
+    }
+
+    @Override
+    public void visitTerminal(TerminalNode terminalNode) {
+
+    }
+
+    @Override
+    public void visitErrorNode(ErrorNode errorNode) {
+
+    }
+
+    @Override
+    public void enterEveryRule(ParserRuleContext parserRuleContext) {
+
+    }
+
+    @Override
+    public void exitEveryRule(ParserRuleContext parserRuleContext) {
+
     }
 }

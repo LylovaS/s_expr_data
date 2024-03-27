@@ -1,10 +1,7 @@
 package ru.nsu.fit.lylova;
 
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import ru.nsu.fit.lylova.data.DataReader;
+import ru.nsu.fit.lylova.data.DataWriter;
 import ru.nsu.fit.lylova.data.node.*;
 import ru.nsu.fit.lylova.schema.SchemaAttribute;
 import ru.nsu.fit.lylova.schema.SchemaElementNode;
@@ -13,6 +10,7 @@ import ru.nsu.fit.lylova.schema.SchemaValueNode;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.StringWriter;
 
 public class Main {
     static private void showTheData(Node node, String prefix) {
@@ -57,8 +55,10 @@ public class Main {
 
         Node dataNode = DataReader.parseDataFromReader(new FileReader("data.txt"));
 
-        System.out.println(dataNode.isElement());
         showTheData(dataNode, "");
+        StringWriter writer = new StringWriter();
+        DataWriter.writeToWriter(writer, dataNode);
+        System.out.print(writer);
 
 //        DataToSchemeTranslator translator = new DataToSchemeTranslator();
 //        SchemaElementNode node = (SchemaElementNode) translator.translate(expressionWalker.getDataNode());
