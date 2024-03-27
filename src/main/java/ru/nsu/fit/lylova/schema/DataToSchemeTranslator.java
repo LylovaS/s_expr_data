@@ -10,8 +10,11 @@ import java.util.HashMap;
 public class DataToSchemeTranslator {
     private SchemaElementNode schema;
     private final HashMap<String, SchemaElementNode> types = new HashMap<>();
+    public void translate(Node schema) {
+        translateNode(schema, null);
+    }
 
-    public void translateNode(Node node, SchemaElementNode root) {
+    private void translateNode(Node node, SchemaElementNode root) {
         ElementNode elementNode = (ElementNode) node;
         switch (elementNode.getName()) {
             case "schema": {
@@ -24,32 +27,41 @@ public class DataToSchemeTranslator {
             }
             case "element": {
                 SchemaElementNode schemaElementNode = new SchemaElementNode();
-                Attribute attribute = elementNode.getAttributeByName("name");
-                if (attribute == null) {
-                    throw new RuntimeException("An element must have a \"name\" argument.");
-                }
-                schemaElementNode.setName(attribute.getValue());
-
-                attribute = elementNode.getAttributeByName("type");
+                Attribute attribute = elementNode.getAttributeByName("type");
                 if (attribute != null) {
                     SchemaElementNode type = types.get(attribute.getValue());
                     if (type == null) {
                         throw new RuntimeException("Type " + attribute.getValue() + " hasn't been declared.");
                     }
-                    schemaElementNode = type;
+                    schemaElementNode.setName(type.getName());
+                    for (var i : type.getAttributes()) {
+                        schemaElementNode.addAttribute(i);
+                    }
+                    for (int i = 0; i < type.getChildrenNumber(); ++i) {
+                        schemaElementNode.addChildNode(type.getChild(i));
+                    }
+                }
+
+
+                attribute = elementNode.getAttributeByName("name");
+//                if (attribute == null) {
+//                    throw new RuntimeException("An element must have a \"name\" argument.");
+//                }
+                if (attribute != null) {
+                    schemaElementNode.setName(attribute.getValue());
                 }
 
                 attribute = elementNode.getAttributeByName("minOccurs");
                 if (attribute != null) {
-                    int minOccurs = Integer.parseInt(attribute.getValue().replaceAll("\"", ""));
+                    int minOccurs = Integer.parseInt(attribute.getValue());
                     attribute = elementNode.getAttributeByName("maxOccurs");
                     if (attribute != null) {
-                        if (attribute.getValue().equals("\"unbounded\"")) {
+                        if (attribute.getValue().equals("unbounded")) {
                             schemaElementNode.setMinOccursWithMaxOccursUnbounded(minOccurs);
                         } else {
                             schemaElementNode.setOccurs(
                                     minOccurs,
-                                    Integer.parseInt(attribute.getValue().replaceAll("\"", "")));
+                                    Integer.parseInt(attribute.getValue()));
                         }
                     } else {
                         throw new RuntimeException("Both minOccurs and maxOccurs must be specified."); //??
@@ -69,7 +81,7 @@ public class DataToSchemeTranslator {
                     SchemaAttribute schemaAttribute = new SchemaAttribute(attribute.getValue());
                     attribute = elementNode.getAttributeByName("use");
                     if (attribute != null) {
-                        switch (attribute.getValue().replaceAll("\"", "")) {
+                        switch (attribute.getValue()) {
                             case "required": {
                                 schemaAttribute.setUse(AttributeUse.REQUIRED);
                                 break;
@@ -97,7 +109,7 @@ public class DataToSchemeTranslator {
                 Attribute attribute = elementNode.getAttributeByName("type");
                 if (attribute != null) {
                     SchemaValueNode schemaValueNode = new SchemaValueNode();
-                    switch (attribute.getValue().replaceAll("\"", "")) {
+                    switch (attribute.getValue()) {
                         case "string": {
                             schemaValueNode.setValueType(ValueType.STRING);
                             break;
@@ -113,15 +125,15 @@ public class DataToSchemeTranslator {
                     }
                     attribute = elementNode.getAttributeByName("minOccurs");
                     if (attribute != null) {
-                        int minOccurs = Integer.parseInt(attribute.getValue().replaceAll("\"", ""));
+                        int minOccurs = Integer.parseInt(attribute.getValue());
                         attribute = elementNode.getAttributeByName("maxOccurs");
                         if (attribute != null) {
-                            if (attribute.getValue().equals("\"unbounded\"")) {
+                            if (attribute.getValue().equals("unbounded")) {
                                 schemaValueNode.setMinOccursWithMaxOccursUnbounded(minOccurs);
                             } else {
                                 schemaValueNode.setOccurs(
                                         minOccurs,
-                                        Integer.parseInt(attribute.getValue().replaceAll("\"", "")));
+                                        Integer.parseInt(attribute.getValue()));
                             }
                         } else {
                             throw new RuntimeException("Both minOccurs and maxOccurs must be specified.");
@@ -129,7 +141,7 @@ public class DataToSchemeTranslator {
                     }
                     root.addChildNode(schemaValueNode);
                 } else {
-                    throw new RuntimeException("Value must have a type.");
+//                    throw new RuntimeException("Value must have a type.");
                 }
                 if (elementNode.getChildrenNumber() > 0) {
                     throw new RuntimeException("Value cannot have any nested elements.");
@@ -143,10 +155,14 @@ public class DataToSchemeTranslator {
                 }
                 String typeName = attribute.getValue();
                 attribute = elementNode.getAttributeByName("element_name");
-                if (attribute == null) {
-                    throw new RuntimeException("Type must have an \"element_name\" attribute.");
+//                if (attribute == null) {
+//                    throw new RuntimeException("Type must have an \"element_name\" attribute.");
+//                }
+                SchemaElementNode type = new SchemaElementNode();
+                if (attribute != null) {
+                    type = type.setName(attribute.getValue());
                 }
-                SchemaElementNode type = new SchemaElementNode().setName(attribute.getValue());
+
                 types.put(typeName, type);
 
                 for (int i = 0; i < elementNode.getChildrenNumber(); i++) {
@@ -158,7 +174,7 @@ public class DataToSchemeTranslator {
         }
     }
 
-    public SchemaElementNode getSchema() {
-        return schema;
+    public SchemaNode getSchema() {
+        return schema.getChild(0);
     }
 }

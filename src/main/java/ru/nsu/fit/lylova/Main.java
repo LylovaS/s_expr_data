@@ -3,6 +3,8 @@ package ru.nsu.fit.lylova;
 import ru.nsu.fit.lylova.data.DataReader;
 import ru.nsu.fit.lylova.data.DataWriter;
 import ru.nsu.fit.lylova.data.node.*;
+import ru.nsu.fit.lylova.schema.DataToSchemeTranslator;
+import ru.nsu.fit.lylova.schema.SchemaValidator;
 import ru.nsu.fit.lylova.schema.node.SchemaAttribute;
 import ru.nsu.fit.lylova.schema.node.SchemaElementNode;
 import ru.nsu.fit.lylova.schema.node.SchemaNode;
@@ -37,6 +39,7 @@ public class Main {
         if (node.isElement()) {
             SchemaElementNode schemaElementNode = (SchemaElementNode) node;
             System.out.print("element " + schemaElementNode.getName());
+            System.out.print(" count=[" + node.getMinOccurs() + "," + node.getMaxOccurs() + "]");
             for (SchemaAttribute attr : schemaElementNode.getAttributes()) {
                 System.out.print(" " + "attr" + "=" + attr.getName());
             }
@@ -48,14 +51,27 @@ public class Main {
         } else {
             SchemaValueNode schemaValueNode = (SchemaValueNode) node;
             System.out.print("value " + schemaValueNode.getType().toString());
+            System.out.print(" count=[" + node.getMinOccurs() + "," + node.getMaxOccurs() + "]");
         }
     }
 
     public static void main(String[] args) throws IOException {
 
         Node dataNode = DataReader.parseDataFromReader(new FileReader("data.txt"));
-
         showTheData(dataNode, "");
+        System.out.println();
+
+        DataToSchemeTranslator translator = new DataToSchemeTranslator();
+        translator.translate(DataReader.parseDataFromReader(new FileReader("schema.txt")));
+        SchemaNode schemaNode = translator.getSchema();
+        showTheData(schemaNode, "");
+        System.out.println();
+        if (SchemaValidator.validate(dataNode, schemaNode)) {
+            System.out.println("Data is ok");
+        } else {
+            System.out.println("Data ne ok");
+        }
+
         StringWriter writer = new StringWriter();
         DataWriter.writeToWriter(writer, dataNode);
         System.out.print(writer);
