@@ -104,6 +104,7 @@ class PathTest {
         assertNotNull(step.getRequirement());
         assertEquals("name", step.getRequirement().getRightPart());
         assertEquals(RequirementPartType.ATTR_NAME, step.getRequirement().getRightPartType());
+        assertEquals("kek", step.getRequirement().getLeftPart());
         assertEquals(RequirementPartType.VALUE, step.getRequirement().getLeftPartType());
         assertEquals("pred", step.getRequirement().getPredicateName());
 

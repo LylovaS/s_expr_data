@@ -15,6 +15,8 @@ import ru.nsu.fit.lylova.path.step.requirement.RequirementPartType;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ru.nsu.fit.lylova.Utils.processEscapingCharsFromInput;
+
 class PathWalker implements PathListener {
     private Path path;
     private Step step;
@@ -199,7 +201,7 @@ class PathWalker implements PathListener {
     public void exitAttribute_expr(PathParser.Attribute_exprContext ctx) {
         if (ctx.STRING() != null) {
             requirementPartTypes.add(RequirementPartType.VALUE);
-            requirementParts.add(ctx.STRING().getText());
+            requirementParts.add(processEscapingCharsFromInput(ctx.STRING().getText()));
         } else {
             requirementPartTypes.add(RequirementPartType.ATTR_NAME);
             requirementParts.add(ctx.nCName().getText());
