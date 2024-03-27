@@ -3,10 +3,10 @@ package ru.nsu.fit.lylova;
 import ru.nsu.fit.lylova.data.DataReader;
 import ru.nsu.fit.lylova.data.DataWriter;
 import ru.nsu.fit.lylova.data.node.*;
-import ru.nsu.fit.lylova.schema.SchemaAttribute;
-import ru.nsu.fit.lylova.schema.SchemaElementNode;
-import ru.nsu.fit.lylova.schema.SchemaNode;
-import ru.nsu.fit.lylova.schema.SchemaValueNode;
+import ru.nsu.fit.lylova.schema.node.SchemaAttribute;
+import ru.nsu.fit.lylova.schema.node.SchemaElementNode;
+import ru.nsu.fit.lylova.schema.node.SchemaNode;
+import ru.nsu.fit.lylova.schema.node.SchemaValueNode;
 
 import java.io.FileReader;
 import java.io.IOException;

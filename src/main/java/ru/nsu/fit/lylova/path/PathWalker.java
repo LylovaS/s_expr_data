@@ -5,6 +5,12 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import ru.nsu.fit.lylova.PathListener;
 import ru.nsu.fit.lylova.PathParser;
+import ru.nsu.fit.lylova.path.step.AxisType;
+import ru.nsu.fit.lylova.path.step.Step;
+import ru.nsu.fit.lylova.path.step.StepTransition;
+import ru.nsu.fit.lylova.path.step.requirement.PredicateType;
+import ru.nsu.fit.lylova.path.step.requirement.Requirement;
+import ru.nsu.fit.lylova.path.step.requirement.RequirementPartType;
 
 import java.util.ArrayList;
 import java.util.List;

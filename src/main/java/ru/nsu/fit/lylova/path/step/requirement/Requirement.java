@@ -1,9 +1,10 @@
-package ru.nsu.fit.lylova.path;
+package ru.nsu.fit.lylova.path.step.requirement;
 
 import ru.nsu.fit.lylova.data.node.Attribute;
 import ru.nsu.fit.lylova.data.node.ElementNode;
 import ru.nsu.fit.lylova.data.node.Node;
 import ru.nsu.fit.lylova.data.node.ValueNode;
+import ru.nsu.fit.lylova.path.Context;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class Requirement {
     private PredicateType type;
     private String predicateName;
 
-    Requirement(PredicateType type, RequirementPartType leftPartType, String leftPart, RequirementPartType rightPartType, String rightPart) {
+    public Requirement(PredicateType type, RequirementPartType leftPartType, String leftPart, RequirementPartType rightPartType, String rightPart) {
         this.leftPartType = leftPartType;
         this.leftPart = leftPart;
         this.rightPartType = rightPartType;
@@ -26,7 +27,7 @@ public class Requirement {
         this.predicateName = null;
     }
 
-    Requirement(String predicateName, RequirementPartType leftPartType, String leftPart, RequirementPartType rightPartType, String rightPart) {
+    public Requirement(String predicateName, RequirementPartType leftPartType, String leftPart, RequirementPartType rightPartType, String rightPart) {
         this.leftPartType = leftPartType;
         this.leftPart = leftPart;
         this.rightPartType = rightPartType;
@@ -162,15 +163,9 @@ public class Requirement {
         if (node.isValue()) {
             ValueNode valueNode = (ValueNode) node;
             switch (valueNode.getValue().getValueType()) {
-                case STRING -> {
-                    attributes.put("type", "string");
-                }
-                case INT -> {
-                    attributes.put("type", "integer");
-                }
-                case DOUBLE -> {
-                    attributes.put("type", "float");
-                }
+                case STRING -> attributes.put("type", "string");
+                case INT -> attributes.put("type", "integer");
+                case DOUBLE -> attributes.put("type", "float");
             }
         }
         if (node.isElement()) {

@@ -1,4 +1,6 @@
-package ru.nsu.fit.lylova.path;
+package ru.nsu.fit.lylova.path.step;
+
+import ru.nsu.fit.lylova.path.step.requirement.Requirement;
 
 public class Step {
     private StepTransition transition;

@@ -1,10 +1,10 @@
-package ru.nsu.fit.lylova.schema;
+package ru.nsu.fit.lylova.schema.node;
 
 import java.security.InvalidParameterException;
 
 public class SchemaAttribute {
-    private String name = null;
-    private AttributeUse use = null;
+    private String name;
+    private AttributeUse use;
 
     public SchemaAttribute(String name) {
         this.name = name;

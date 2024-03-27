@@ -8,6 +8,8 @@ import ru.nsu.fit.lylova.PathLexer;
 import ru.nsu.fit.lylova.PathParser;
 import ru.nsu.fit.lylova.data.node.ElementNode;
 import ru.nsu.fit.lylova.data.node.Node;
+import ru.nsu.fit.lylova.path.step.Step;
+import ru.nsu.fit.lylova.path.step.StepTransition;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -53,9 +55,7 @@ public class Path {
         }
         Set<Node> result = new HashSet<>();
         switch (type) {
-            case RELATIVE -> {
-                result.add(contextNode);
-            }
+            case RELATIVE -> result.add(contextNode);
             case ABSOLUTE -> {
                 imaginaryNode = new DocumentNode("documentNode").addChildNode(findRootOfData(contextNode));
                 result.add(imaginaryNode);
@@ -119,9 +119,7 @@ public class Path {
                     result.add(node.getParent());
                 }
             }
-            case CURRENT -> {
-                result.add(node);
-            }
+            case CURRENT -> result.add(node);
             case CHILD_ELEMENT -> {
                 if (!node.isElement()) {
                     return;

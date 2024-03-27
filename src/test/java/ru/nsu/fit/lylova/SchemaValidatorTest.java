@@ -4,9 +4,10 @@ import org.junit.jupiter.api.Test;
 import ru.nsu.fit.lylova.data.node.ElementNode;
 import ru.nsu.fit.lylova.data.node.Value;
 import ru.nsu.fit.lylova.data.node.ValueNode;
-import ru.nsu.fit.lylova.schema.SchemaElementNode;
-import ru.nsu.fit.lylova.schema.SchemaValueNode;
-import ru.nsu.fit.lylova.schema.ValueType;
+import ru.nsu.fit.lylova.schema.SchemaValidator;
+import ru.nsu.fit.lylova.schema.node.SchemaElementNode;
+import ru.nsu.fit.lylova.schema.node.SchemaValueNode;
+import ru.nsu.fit.lylova.schema.node.ValueType;
 
 import static org.junit.jupiter.api.Assertions.*;
 
