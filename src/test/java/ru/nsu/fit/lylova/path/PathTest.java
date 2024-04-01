@@ -20,7 +20,7 @@ class PathTest {
 
     @Test
     void evaluate() throws IOException {
-        Node node = DataReader.parseDataFromReader(new FileReader("src/test/resources/data1.txt"));
+        Node node = DataReader.parseData(new FileReader("src/test/resources/data1.txt"));
         Context context = new Context(node);
         // path="element"
         Path path = new Path(PathType.ABSOLUTE).addStep(new Step(StepTransition.JUST_CURRENT, "element"));

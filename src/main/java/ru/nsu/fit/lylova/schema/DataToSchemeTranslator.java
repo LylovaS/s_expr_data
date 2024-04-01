@@ -10,8 +10,10 @@ import java.util.HashMap;
 public class DataToSchemeTranslator {
     private SchemaElementNode schema;
     private final HashMap<String, SchemaElementNode> types = new HashMap<>();
-    public void translate(Node schema) {
-        translateNode(schema, null);
+    public static SchemaNode translate(Node schema) throws Exception {
+        DataToSchemeTranslator translator = new DataToSchemeTranslator();
+        translator.translateNode(schema, null);
+        return translator.getSchema();
     }
 
     private void translateNode(Node node, SchemaElementNode root) {
@@ -140,9 +142,10 @@ public class DataToSchemeTranslator {
                         }
                     }
                     root.addChildNode(schemaValueNode);
-                } else {
-//                    throw new RuntimeException("Value must have a type.");
                 }
+//                else {
+//                  throw new RuntimeException("Value must have a type.");
+//                }
                 if (elementNode.getChildrenNumber() > 0) {
                     throw new RuntimeException("Value cannot have any nested elements.");
                 }
@@ -174,7 +177,10 @@ public class DataToSchemeTranslator {
         }
     }
 
-    public SchemaNode getSchema() {
+    private SchemaNode getSchema() throws Exception {
+        if (schema == null || schema.getChildrenNumber() != 1) {
+            throw new Exception("schema must have exactly 1 not complex type element");
+        }
         return schema.getChild(0);
     }
 }

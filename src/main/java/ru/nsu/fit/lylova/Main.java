@@ -13,7 +13,6 @@ import ru.nsu.fit.lylova.schema.node.SchemaNode;
 import ru.nsu.fit.lylova.schema.node.SchemaValueNode;
 
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.StringWriter;
 
 public class Main {
@@ -59,13 +58,12 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Node dataNode = DataReader.parseDataFromReader(new FileReader("data.txt"));
+        Node dataNode = DataReader.parseData(new FileReader("data.txt"));
         showTheData(dataNode, "");
         System.out.println();
 
-        DataToSchemeTranslator translator = new DataToSchemeTranslator();
-        translator.translate(DataReader.parseDataFromReader(new FileReader("schema.txt")));
-        SchemaNode schemaNode = translator.getSchema();
+        SchemaNode schemaNode = DataToSchemeTranslator.translate(DataReader.parseData(new FileReader("schema.txt")));
+
         showTheData(schemaNode, "");
         System.out.println();
         if (SchemaValidator.validate(dataNode, schemaNode)) {
@@ -74,7 +72,7 @@ public class Main {
             System.out.println("Data ne ok");
         }
 
-        Node node2 = DataReader.parseDataFromReaderWithSchema(new FileReader("data.txt"), new FileReader("schema.txt"));
+        Node node2 = DataReader.parseDataWithSchema(new FileReader("data.txt"), new FileReader("schema.txt"));
         showTheData(node2, "");
 
         StringWriter writer = new StringWriter();
@@ -87,9 +85,5 @@ public class Main {
         for (Node i : res) {
             showTheData(i, "");
         }
-
-//        DataToSchemeTranslator translator = new DataToSchemeTranslator();
-//        SchemaElementNode node = (SchemaElementNode) translator.translate(expressionWalker.getDataNode());
-//        showTheData(node, "");
     }
 }

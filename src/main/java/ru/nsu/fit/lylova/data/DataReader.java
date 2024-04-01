@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 public class DataReader {
-    public static Node parseDataFromReader(Reader reader) throws IOException {
+    public static Node parseData(Reader reader) throws IOException {
         DataLexer lexer = new DataLexer(CharStreams.fromReader(reader));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         DataParser parser = new DataParser(tokens);
@@ -26,13 +26,20 @@ public class DataReader {
         return dataWalker.getDataNode();
     }
 
-    public static Node parseDataFromReaderWithSchema(Reader dataReader, Reader schemaReader) throws Exception {
-        Node data = parseDataFromReader(dataReader);
+    public static Node parseDataWithSchema(Reader dataReader, Reader schemaReader) throws Exception {
+        Node data = parseData(dataReader);
 
-        Node schema_tmp = parseDataFromReader(schemaReader);
-        DataToSchemeTranslator translator = new DataToSchemeTranslator();
-        translator.translate(schema_tmp);
-        SchemaNode schema = translator.getSchema();
+        Node schema_tmp = parseData(schemaReader);
+        SchemaNode schema = DataToSchemeTranslator.translate(schema_tmp);
+
+        if (!SchemaValidator.validate(data, schema)) {
+            throw new Exception("data does not match the schema (((");
+        }
+        return data;
+    }
+
+    public static Node parseDataWithSchema(Reader dataReader, SchemaNode schema) throws Exception {
+        Node data = parseData(dataReader);
 
         if (!SchemaValidator.validate(data, schema)) {
             throw new Exception("data does not match the schema (((");

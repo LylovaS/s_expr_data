@@ -7,25 +7,27 @@ import ru.nsu.fit.lylova.data.node.ElementNode;
 import ru.nsu.fit.lylova.data.node.Value;
 import ru.nsu.fit.lylova.data.node.ValueNode;
 import ru.nsu.fit.lylova.schema.*;
+import ru.nsu.fit.lylova.schema.node.AttributeUse;
+import ru.nsu.fit.lylova.schema.node.SchemaElementNode;
+import ru.nsu.fit.lylova.schema.node.SchemaValueNode;
+import ru.nsu.fit.lylova.schema.node.ValueType;
 
 class DataToSchemeTranslatorTest {
     @Test
     public void simpleTranslatorTest() {
         // check ValueNode into schema
         ValueNode valueNode = new ValueNode().setValue(new Value("Value Node"));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> DataToSchemeTranslator.translate(valueNode));
+        Assertions.assertThrows(Exception.class, () -> DataToSchemeTranslator.translate(valueNode));
         // check empty schema
         ElementNode root = new ElementNode("schema");
-        SchemaElementNode schema = (SchemaElementNode) DataToSchemeTranslator.translate(root);
-        Assertions.assertTrue(schema.isElement());
-        Assertions.assertEquals("schema", schema.getName());
+        Assertions.assertThrows(Exception.class, () -> DataToSchemeTranslator.translate(root));
         // check schema with ValueNode
         root.addChildNode(valueNode);
         Assertions.assertThrows(RuntimeException.class, () -> DataToSchemeTranslator.translate(root));
     }
 
     @Test
-    public void complexDataTranslatorTest() {
+    public void complexDataTranslatorTest() throws Exception {
         // declare element "district"
         Attribute name1 = new Attribute().setName("name").setValue("district");
         ElementNode district = new ElementNode("element").addAttribute(name1);
@@ -58,20 +60,18 @@ class DataToSchemeTranslatorTest {
                                 .addChildNode(attributeSchoolName)));
         // check SchemaDistrict
         SchemaElementNode schema = (SchemaElementNode) DataToSchemeTranslator.translate(root);
-        Assertions.assertEquals(1, schema.getChildrenNumber());
-        SchemaElementNode schemaDistrict = (SchemaElementNode) schema.getChild(0);
-        Assertions.assertEquals("district", schemaDistrict.getName());
-        Assertions.assertEquals("city", schemaDistrict.getAttributeByName("city").getName());
-        Assertions.assertEquals(AttributeUse.OPTIONAL, schemaDistrict.getAttributeByName("city").getUse());
+        Assertions.assertEquals("district", schema.getName());
+        Assertions.assertEquals("city", schema.getAttributeByName("city").getName());
+        Assertions.assertEquals(AttributeUse.OPTIONAL, schema.getAttributeByName("city").getUse());
         // check schemaSchool
-        Assertions.assertEquals(1, schemaDistrict.getChildrenNumber());
-        SchemaElementNode schemaSchool = (SchemaElementNode) schemaDistrict.getChild(0);
+        Assertions.assertEquals(1, schema.getChildrenNumber());
+        SchemaElementNode schemaSchool = (SchemaElementNode) schema.getChild(0);
         Assertions.assertEquals("school", schemaSchool.getName());
         Assertions.assertEquals(0, schemaSchool.getChildrenNumber());
     }
 
     @Test
-    public void typeDataTranslatorTest() {
+    public void typeDataTranslatorTest() throws Exception {
         // declare type
         Attribute typeName = new Attribute().setName("type_name").setValue("grade_type");
         Attribute elementName = new Attribute().setName("element_name").setValue("grade");
@@ -117,12 +117,11 @@ class DataToSchemeTranslatorTest {
                                 .addChildNode(grade)));
         // check SchemaDistrict
         SchemaElementNode schema = (SchemaElementNode) DataToSchemeTranslator.translate(root);
-        Assertions.assertEquals(1, schema.getChildrenNumber());
-        SchemaElementNode schemaDistrict = (SchemaElementNode) schema.getChild(0);
-        Assertions.assertEquals("district", schemaDistrict.getName());
+//        Assertions.assertEquals(1, schema.getChildrenNumber());
+        Assertions.assertEquals("district", schema.getName());
         // check schemaSchool
-        Assertions.assertEquals(1, schemaDistrict.getChildrenNumber());
-        SchemaElementNode schemaSchool = (SchemaElementNode) schemaDistrict.getChild(0);
+        Assertions.assertEquals(1, schema.getChildrenNumber());
+        SchemaElementNode schemaSchool = (SchemaElementNode) schema.getChild(0);
         Assertions.assertEquals("school", schemaSchool.getName());
         // check schemaGrade
         Assertions.assertEquals(1, schemaSchool.getChildrenNumber());
