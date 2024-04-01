@@ -3,6 +3,8 @@ package ru.nsu.fit.lylova;
 import ru.nsu.fit.lylova.data.DataReader;
 import ru.nsu.fit.lylova.data.DataWriter;
 import ru.nsu.fit.lylova.data.node.*;
+import ru.nsu.fit.lylova.path.Context;
+import ru.nsu.fit.lylova.path.Path;
 import ru.nsu.fit.lylova.schema.DataToSchemeTranslator;
 import ru.nsu.fit.lylova.schema.SchemaValidator;
 import ru.nsu.fit.lylova.schema.node.SchemaAttribute;
@@ -55,7 +57,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         Node dataNode = DataReader.parseDataFromReader(new FileReader("data.txt"));
         showTheData(dataNode, "");
@@ -72,9 +74,19 @@ public class Main {
             System.out.println("Data ne ok");
         }
 
+        Node node2 = DataReader.parseDataFromReaderWithSchema(new FileReader("data.txt"), new FileReader("schema.txt"));
+        showTheData(node2, "");
+
         StringWriter writer = new StringWriter();
         DataWriter.writeToWriter(writer, dataNode);
-        System.out.print(writer);
+        System.out.println(writer);
+
+        Path path = Path.compile("//school[@name = \"Gymnasium 6\"]//@value");
+        var res = path.evaluate(new Context(dataNode));
+        System.out.println(res.size());
+        for (Node i : res) {
+            showTheData(i, "");
+        }
 
 //        DataToSchemeTranslator translator = new DataToSchemeTranslator();
 //        SchemaElementNode node = (SchemaElementNode) translator.translate(expressionWalker.getDataNode());
