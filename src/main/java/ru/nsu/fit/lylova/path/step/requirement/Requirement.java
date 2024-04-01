@@ -164,8 +164,8 @@ public class Requirement {
             ValueNode valueNode = (ValueNode) node;
             switch (valueNode.getValue().getValueType()) {
                 case STRING -> attributes.put("type", "string");
-                case INT -> attributes.put("type", "integer");
-                case DOUBLE -> attributes.put("type", "float");
+                case INT -> attributes.put("type", "int");
+                case DOUBLE -> attributes.put("type", "double");
             }
         }
         if (node.isElement()) {
