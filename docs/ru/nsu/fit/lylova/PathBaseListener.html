@@ -124,6 +124,26 @@ implements <a href="PathListener.html" title="interface in ru.nsu.fit.lylova">Pa
 <div class="block">Enter a parse tree produced by <a href="PathParser.html#absoluteLocationPathNoroot()"><code>PathParser.absoluteLocationPathNoroot()</code></a>.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterAttribute_expr(ru.nsu.fit.lylova.PathParser.Attribute_exprContext)" class="member-name-link">enterAttribute_expr</a><wbr>(<a href="PathParser.Attribute_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Attribute_exprContext</a>&nbsp;ctx)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#attribute_expr()"><code>PathParser.attribute_expr()</code></a>.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterCalc(ru.nsu.fit.lylova.PathParser.CalcContext)" class="member-name-link">enterCalc</a><wbr>(<a href="PathParser.CalcContext.html" title="class in ru.nsu.fit.lylova">PathParser.CalcContext</a>&nbsp;ctx)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#calc()"><code>PathParser.calc()</code></a>.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterCustom_predicat_expr(ru.nsu.fit.lylova.PathParser.Custom_predicat_exprContext)" class="member-name-link">enterCustom_predicat_expr</a><wbr>(<a href="PathParser.Custom_predicat_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Custom_predicat_exprContext</a>&nbsp;ctx)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#custom_predicat_expr()"><code>PathParser.custom_predicat_expr()</code></a>.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterEqual_pred_expr(ru.nsu.fit.lylova.PathParser.Equal_pred_exprContext)" class="member-name-link">enterEqual_pred_expr</a><wbr>(<a href="PathParser.Equal_pred_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Equal_pred_exprContext</a>&nbsp;ctx)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#equal_pred_expr()"><code>PathParser.equal_pred_expr()</code></a>.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterEveryRule(org.antlr.v4.runtime.ParserRuleContext)" class="member-name-link">enterEveryRule</a><wbr>(org.antlr.v4.runtime.ParserRuleContext&nbsp;ctx)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"></div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
@@ -137,57 +157,77 @@ implements <a href="PathListener.html" title="interface in ru.nsu.fit.lylova">Pa
 <div class="block">Enter a parse tree produced by <a href="PathParser.html#locationPath()"><code>PathParser.locationPath()</code></a>.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterMain(ru.nsu.fit.lylova.PathParser.MainContext)" class="member-name-link">enterMain</a><wbr>(<a href="PathParser.MainContext.html" title="class in ru.nsu.fit.lylova">PathParser.MainContext</a>&nbsp;ctx)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterNCName(ru.nsu.fit.lylova.PathParser.NCNameContext)" class="member-name-link">enterNCName</a><wbr>(<a href="PathParser.NCNameContext.html" title="class in ru.nsu.fit.lylova">PathParser.NCNameContext</a>&nbsp;ctx)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Enter a parse tree produced by <a href="PathParser.html#main()"><code>PathParser.main()</code></a>.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterNCName(ru.nsu.fit.lylova.PathParser.NCNameContext)" class="member-name-link">enterNCName</a><wbr>(<a href="PathParser.NCNameContext.html" title="class in ru.nsu.fit.lylova">PathParser.NCNameContext</a>&nbsp;ctx)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Enter a parse tree produced by <a href="PathParser.html#nCName()"><code>PathParser.nCName()</code></a>.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterPredicate(ru.nsu.fit.lylova.PathParser.PredicateContext)" class="member-name-link">enterPredicate</a><wbr>(<a href="PathParser.PredicateContext.html" title="class in ru.nsu.fit.lylova">PathParser.PredicateContext</a>&nbsp;ctx)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterPredicate(ru.nsu.fit.lylova.PathParser.PredicateContext)" class="member-name-link">enterPredicate</a><wbr>(<a href="PathParser.PredicateContext.html" title="class in ru.nsu.fit.lylova">PathParser.PredicateContext</a>&nbsp;ctx)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Enter a parse tree produced by <a href="PathParser.html#predicate()"><code>PathParser.predicate()</code></a>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterRelativeLocationPath(ru.nsu.fit.lylova.PathParser.RelativeLocationPathContext)" class="member-name-link">enterRelativeLocationPath</a><wbr>(<a href="PathParser.RelativeLocationPathContext.html" title="class in ru.nsu.fit.lylova">PathParser.RelativeLocationPathContext</a>&nbsp;ctx)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterRelativeLocationPath(ru.nsu.fit.lylova.PathParser.RelativeLocationPathContext)" class="member-name-link">enterRelativeLocationPath</a><wbr>(<a href="PathParser.RelativeLocationPathContext.html" title="class in ru.nsu.fit.lylova">PathParser.RelativeLocationPathContext</a>&nbsp;ctx)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Enter a parse tree produced by <a href="PathParser.html#relativeLocationPath()"><code>PathParser.relativeLocationPath()</code></a>.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterStep(ru.nsu.fit.lylova.PathParser.StepContext)" class="member-name-link">enterStep</a><wbr>(<a href="PathParser.StepContext.html" title="class in ru.nsu.fit.lylova">PathParser.StepContext</a>&nbsp;ctx)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterStep(ru.nsu.fit.lylova.PathParser.StepContext)" class="member-name-link">enterStep</a><wbr>(<a href="PathParser.StepContext.html" title="class in ru.nsu.fit.lylova">PathParser.StepContext</a>&nbsp;ctx)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Enter a parse tree produced by <a href="PathParser.html#step()"><code>PathParser.step()</code></a>.</div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterStepSeparator(ru.nsu.fit.lylova.PathParser.StepSeparatorContext)" class="member-name-link">enterStepSeparator</a><wbr>(<a href="PathParser.StepSeparatorContext.html" title="class in ru.nsu.fit.lylova">PathParser.StepSeparatorContext</a>&nbsp;ctx)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#stepSeparator()"><code>PathParser.stepSeparator()</code></a>.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitAbbreviatedStep(ru.nsu.fit.lylova.PathParser.AbbreviatedStepContext)" class="member-name-link">exitAbbreviatedStep</a><wbr>(<a href="PathParser.AbbreviatedStepContext.html" title="class in ru.nsu.fit.lylova">PathParser.AbbreviatedStepContext</a>&nbsp;ctx)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#enterType(ru.nsu.fit.lylova.PathParser.TypeContext)" class="member-name-link">enterType</a><wbr>(<a href="PathParser.TypeContext.html" title="class in ru.nsu.fit.lylova">PathParser.TypeContext</a>&nbsp;ctx)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#type()"><code>PathParser.type()</code></a>.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitAbbreviatedStep(ru.nsu.fit.lylova.PathParser.AbbreviatedStepContext)" class="member-name-link">exitAbbreviatedStep</a><wbr>(<a href="PathParser.AbbreviatedStepContext.html" title="class in ru.nsu.fit.lylova">PathParser.AbbreviatedStepContext</a>&nbsp;ctx)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exit a parse tree produced by <a href="PathParser.html#abbreviatedStep()"><code>PathParser.abbreviatedStep()</code></a>.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitAbsoluteLocationPathNoroot(ru.nsu.fit.lylova.PathParser.AbsoluteLocationPathNorootContext)" class="member-name-link">exitAbsoluteLocationPathNoroot</a><wbr>(<a href="PathParser.AbsoluteLocationPathNorootContext.html" title="class in ru.nsu.fit.lylova">PathParser.AbsoluteLocationPathNorootContext</a>&nbsp;ctx)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitAbsoluteLocationPathNoroot(ru.nsu.fit.lylova.PathParser.AbsoluteLocationPathNorootContext)" class="member-name-link">exitAbsoluteLocationPathNoroot</a><wbr>(<a href="PathParser.AbsoluteLocationPathNorootContext.html" title="class in ru.nsu.fit.lylova">PathParser.AbsoluteLocationPathNorootContext</a>&nbsp;ctx)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exit a parse tree produced by <a href="PathParser.html#absoluteLocationPathNoroot()"><code>PathParser.absoluteLocationPathNoroot()</code></a>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitEveryRule(org.antlr.v4.runtime.ParserRuleContext)" class="member-name-link">exitEveryRule</a><wbr>(org.antlr.v4.runtime.ParserRuleContext&nbsp;ctx)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"></div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitExpr(ru.nsu.fit.lylova.PathParser.ExprContext)" class="member-name-link">exitExpr</a><wbr>(<a href="PathParser.ExprContext.html" title="class in ru.nsu.fit.lylova">PathParser.ExprContext</a>&nbsp;ctx)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitAttribute_expr(ru.nsu.fit.lylova.PathParser.Attribute_exprContext)" class="member-name-link">exitAttribute_expr</a><wbr>(<a href="PathParser.Attribute_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Attribute_exprContext</a>&nbsp;ctx)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#attribute_expr()"><code>PathParser.attribute_expr()</code></a>.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitCalc(ru.nsu.fit.lylova.PathParser.CalcContext)" class="member-name-link">exitCalc</a><wbr>(<a href="PathParser.CalcContext.html" title="class in ru.nsu.fit.lylova">PathParser.CalcContext</a>&nbsp;ctx)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#calc()"><code>PathParser.calc()</code></a>.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitCustom_predicat_expr(ru.nsu.fit.lylova.PathParser.Custom_predicat_exprContext)" class="member-name-link">exitCustom_predicat_expr</a><wbr>(<a href="PathParser.Custom_predicat_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Custom_predicat_exprContext</a>&nbsp;ctx)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#custom_predicat_expr()"><code>PathParser.custom_predicat_expr()</code></a>.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitEqual_pred_expr(ru.nsu.fit.lylova.PathParser.Equal_pred_exprContext)" class="member-name-link">exitEqual_pred_expr</a><wbr>(<a href="PathParser.Equal_pred_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Equal_pred_exprContext</a>&nbsp;ctx)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#equal_pred_expr()"><code>PathParser.equal_pred_expr()</code></a>.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitEveryRule(org.antlr.v4.runtime.ParserRuleContext)" class="member-name-link">exitEveryRule</a><wbr>(org.antlr.v4.runtime.ParserRuleContext&nbsp;ctx)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitExpr(ru.nsu.fit.lylova.PathParser.ExprContext)" class="member-name-link">exitExpr</a><wbr>(<a href="PathParser.ExprContext.html" title="class in ru.nsu.fit.lylova">PathParser.ExprContext</a>&nbsp;ctx)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exit a parse tree produced by <a href="PathParser.html#expr()"><code>PathParser.expr()</code></a>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitLocationPath(ru.nsu.fit.lylova.PathParser.LocationPathContext)" class="member-name-link">exitLocationPath</a><wbr>(<a href="PathParser.LocationPathContext.html" title="class in ru.nsu.fit.lylova">PathParser.LocationPathContext</a>&nbsp;ctx)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Exit a parse tree produced by <a href="PathParser.html#locationPath()"><code>PathParser.locationPath()</code></a>.</div>
-</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitMain(ru.nsu.fit.lylova.PathParser.MainContext)" class="member-name-link">exitMain</a><wbr>(<a href="PathParser.MainContext.html" title="class in ru.nsu.fit.lylova">PathParser.MainContext</a>&nbsp;ctx)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitLocationPath(ru.nsu.fit.lylova.PathParser.LocationPathContext)" class="member-name-link">exitLocationPath</a><wbr>(<a href="PathParser.LocationPathContext.html" title="class in ru.nsu.fit.lylova">PathParser.LocationPathContext</a>&nbsp;ctx)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Exit a parse tree produced by <a href="PathParser.html#main()"><code>PathParser.main()</code></a>.</div>
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#locationPath()"><code>PathParser.locationPath()</code></a>.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitNCName(ru.nsu.fit.lylova.PathParser.NCNameContext)" class="member-name-link">exitNCName</a><wbr>(<a href="PathParser.NCNameContext.html" title="class in ru.nsu.fit.lylova">PathParser.NCNameContext</a>&nbsp;ctx)</code></div>
@@ -208,6 +248,16 @@ implements <a href="PathListener.html" title="interface in ru.nsu.fit.lylova">Pa
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitStep(ru.nsu.fit.lylova.PathParser.StepContext)" class="member-name-link">exitStep</a><wbr>(<a href="PathParser.StepContext.html" title="class in ru.nsu.fit.lylova">PathParser.StepContext</a>&nbsp;ctx)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Exit a parse tree produced by <a href="PathParser.html#step()"><code>PathParser.step()</code></a>.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitStepSeparator(ru.nsu.fit.lylova.PathParser.StepSeparatorContext)" class="member-name-link">exitStepSeparator</a><wbr>(<a href="PathParser.StepSeparatorContext.html" title="class in ru.nsu.fit.lylova">PathParser.StepSeparatorContext</a>&nbsp;ctx)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#stepSeparator()"><code>PathParser.stepSeparator()</code></a>.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitType(ru.nsu.fit.lylova.PathParser.TypeContext)" class="member-name-link">exitType</a><wbr>(<a href="PathParser.TypeContext.html" title="class in ru.nsu.fit.lylova">PathParser.TypeContext</a>&nbsp;ctx)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#type()"><code>PathParser.type()</code></a>.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#visitErrorNode(org.antlr.v4.runtime.tree.ErrorNode)" class="member-name-link">visitErrorNode</a><wbr>(org.antlr.v4.runtime.tree.ErrorNode&nbsp;node)</code></div>
@@ -247,30 +297,30 @@ implements <a href="PathListener.html" title="interface in ru.nsu.fit.lylova">Pa
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="enterMain(ru.nsu.fit.lylova.PathParser.MainContext)">
-<h3>enterMain</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">enterMain</span><wbr><span class="parameters">(<a href="PathParser.MainContext.html" title="class in ru.nsu.fit.lylova">PathParser.MainContext</a>&nbsp;ctx)</span></div>
-<div class="block">Enter a parse tree produced by <a href="PathParser.html#main()"><code>PathParser.main()</code></a>.
+<section class="detail" id="enterCalc(ru.nsu.fit.lylova.PathParser.CalcContext)">
+<h3>enterCalc</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">enterCalc</span><wbr><span class="parameters">(<a href="PathParser.CalcContext.html" title="class in ru.nsu.fit.lylova">PathParser.CalcContext</a>&nbsp;ctx)</span></div>
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#calc()"><code>PathParser.calc()</code></a>.
 
  <p>The default implementation does nothing.</p></div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="PathListener.html#enterMain(ru.nsu.fit.lylova.PathParser.MainContext)">enterMain</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dd><code><a href="PathListener.html#enterCalc(ru.nsu.fit.lylova.PathParser.CalcContext)">enterCalc</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>ctx</code> - the parse tree</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="exitMain(ru.nsu.fit.lylova.PathParser.MainContext)">
-<h3>exitMain</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">exitMain</span><wbr><span class="parameters">(<a href="PathParser.MainContext.html" title="class in ru.nsu.fit.lylova">PathParser.MainContext</a>&nbsp;ctx)</span></div>
-<div class="block">Exit a parse tree produced by <a href="PathParser.html#main()"><code>PathParser.main()</code></a>.
+<section class="detail" id="exitCalc(ru.nsu.fit.lylova.PathParser.CalcContext)">
+<h3>exitCalc</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">exitCalc</span><wbr><span class="parameters">(<a href="PathParser.CalcContext.html" title="class in ru.nsu.fit.lylova">PathParser.CalcContext</a>&nbsp;ctx)</span></div>
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#calc()"><code>PathParser.calc()</code></a>.
 
  <p>The default implementation does nothing.</p></div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="PathListener.html#exitMain(ru.nsu.fit.lylova.PathParser.MainContext)">exitMain</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dd><code><a href="PathListener.html#exitCalc(ru.nsu.fit.lylova.PathParser.CalcContext)">exitCalc</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>ctx</code> - the parse tree</dd>
 </dl>
@@ -361,6 +411,66 @@ implements <a href="PathListener.html" title="interface in ru.nsu.fit.lylova">Pa
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="PathListener.html#exitRelativeLocationPath(ru.nsu.fit.lylova.PathParser.RelativeLocationPathContext)">exitRelativeLocationPath</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>ctx</code> - the parse tree</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="enterStepSeparator(ru.nsu.fit.lylova.PathParser.StepSeparatorContext)">
+<h3>enterStepSeparator</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">enterStepSeparator</span><wbr><span class="parameters">(<a href="PathParser.StepSeparatorContext.html" title="class in ru.nsu.fit.lylova">PathParser.StepSeparatorContext</a>&nbsp;ctx)</span></div>
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#stepSeparator()"><code>PathParser.stepSeparator()</code></a>.
+
+ <p>The default implementation does nothing.</p></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="PathListener.html#enterStepSeparator(ru.nsu.fit.lylova.PathParser.StepSeparatorContext)">enterStepSeparator</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>ctx</code> - the parse tree</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="exitStepSeparator(ru.nsu.fit.lylova.PathParser.StepSeparatorContext)">
+<h3>exitStepSeparator</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">exitStepSeparator</span><wbr><span class="parameters">(<a href="PathParser.StepSeparatorContext.html" title="class in ru.nsu.fit.lylova">PathParser.StepSeparatorContext</a>&nbsp;ctx)</span></div>
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#stepSeparator()"><code>PathParser.stepSeparator()</code></a>.
+
+ <p>The default implementation does nothing.</p></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="PathListener.html#exitStepSeparator(ru.nsu.fit.lylova.PathParser.StepSeparatorContext)">exitStepSeparator</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>ctx</code> - the parse tree</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="enterType(ru.nsu.fit.lylova.PathParser.TypeContext)">
+<h3>enterType</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">enterType</span><wbr><span class="parameters">(<a href="PathParser.TypeContext.html" title="class in ru.nsu.fit.lylova">PathParser.TypeContext</a>&nbsp;ctx)</span></div>
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#type()"><code>PathParser.type()</code></a>.
+
+ <p>The default implementation does nothing.</p></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="PathListener.html#enterType(ru.nsu.fit.lylova.PathParser.TypeContext)">enterType</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>ctx</code> - the parse tree</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="exitType(ru.nsu.fit.lylova.PathParser.TypeContext)">
+<h3>exitType</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">exitType</span><wbr><span class="parameters">(<a href="PathParser.TypeContext.html" title="class in ru.nsu.fit.lylova">PathParser.TypeContext</a>&nbsp;ctx)</span></div>
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#type()"><code>PathParser.type()</code></a>.
+
+ <p>The default implementation does nothing.</p></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="PathListener.html#exitType(ru.nsu.fit.lylova.PathParser.TypeContext)">exitType</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>ctx</code> - the parse tree</dd>
 </dl>
@@ -481,6 +591,96 @@ implements <a href="PathListener.html" title="interface in ru.nsu.fit.lylova">Pa
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="PathListener.html#exitExpr(ru.nsu.fit.lylova.PathParser.ExprContext)">exitExpr</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>ctx</code> - the parse tree</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="enterEqual_pred_expr(ru.nsu.fit.lylova.PathParser.Equal_pred_exprContext)">
+<h3>enterEqual_pred_expr</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">enterEqual_pred_expr</span><wbr><span class="parameters">(<a href="PathParser.Equal_pred_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Equal_pred_exprContext</a>&nbsp;ctx)</span></div>
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#equal_pred_expr()"><code>PathParser.equal_pred_expr()</code></a>.
+
+ <p>The default implementation does nothing.</p></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="PathListener.html#enterEqual_pred_expr(ru.nsu.fit.lylova.PathParser.Equal_pred_exprContext)">enterEqual_pred_expr</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>ctx</code> - the parse tree</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="exitEqual_pred_expr(ru.nsu.fit.lylova.PathParser.Equal_pred_exprContext)">
+<h3>exitEqual_pred_expr</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">exitEqual_pred_expr</span><wbr><span class="parameters">(<a href="PathParser.Equal_pred_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Equal_pred_exprContext</a>&nbsp;ctx)</span></div>
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#equal_pred_expr()"><code>PathParser.equal_pred_expr()</code></a>.
+
+ <p>The default implementation does nothing.</p></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="PathListener.html#exitEqual_pred_expr(ru.nsu.fit.lylova.PathParser.Equal_pred_exprContext)">exitEqual_pred_expr</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>ctx</code> - the parse tree</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="enterCustom_predicat_expr(ru.nsu.fit.lylova.PathParser.Custom_predicat_exprContext)">
+<h3>enterCustom_predicat_expr</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">enterCustom_predicat_expr</span><wbr><span class="parameters">(<a href="PathParser.Custom_predicat_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Custom_predicat_exprContext</a>&nbsp;ctx)</span></div>
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#custom_predicat_expr()"><code>PathParser.custom_predicat_expr()</code></a>.
+
+ <p>The default implementation does nothing.</p></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="PathListener.html#enterCustom_predicat_expr(ru.nsu.fit.lylova.PathParser.Custom_predicat_exprContext)">enterCustom_predicat_expr</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>ctx</code> - the parse tree</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="exitCustom_predicat_expr(ru.nsu.fit.lylova.PathParser.Custom_predicat_exprContext)">
+<h3>exitCustom_predicat_expr</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">exitCustom_predicat_expr</span><wbr><span class="parameters">(<a href="PathParser.Custom_predicat_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Custom_predicat_exprContext</a>&nbsp;ctx)</span></div>
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#custom_predicat_expr()"><code>PathParser.custom_predicat_expr()</code></a>.
+
+ <p>The default implementation does nothing.</p></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="PathListener.html#exitCustom_predicat_expr(ru.nsu.fit.lylova.PathParser.Custom_predicat_exprContext)">exitCustom_predicat_expr</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>ctx</code> - the parse tree</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="enterAttribute_expr(ru.nsu.fit.lylova.PathParser.Attribute_exprContext)">
+<h3>enterAttribute_expr</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">enterAttribute_expr</span><wbr><span class="parameters">(<a href="PathParser.Attribute_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Attribute_exprContext</a>&nbsp;ctx)</span></div>
+<div class="block">Enter a parse tree produced by <a href="PathParser.html#attribute_expr()"><code>PathParser.attribute_expr()</code></a>.
+
+ <p>The default implementation does nothing.</p></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="PathListener.html#enterAttribute_expr(ru.nsu.fit.lylova.PathParser.Attribute_exprContext)">enterAttribute_expr</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>ctx</code> - the parse tree</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="exitAttribute_expr(ru.nsu.fit.lylova.PathParser.Attribute_exprContext)">
+<h3>exitAttribute_expr</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">exitAttribute_expr</span><wbr><span class="parameters">(<a href="PathParser.Attribute_exprContext.html" title="class in ru.nsu.fit.lylova">PathParser.Attribute_exprContext</a>&nbsp;ctx)</span></div>
+<div class="block">Exit a parse tree produced by <a href="PathParser.html#attribute_expr()"><code>PathParser.attribute_expr()</code></a>.
+
+ <p>The default implementation does nothing.</p></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="PathListener.html#exitAttribute_expr(ru.nsu.fit.lylova.PathParser.Attribute_exprContext)">exitAttribute_expr</a></code>&nbsp;in interface&nbsp;<code><a href="PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>ctx</code> - the parse tree</dd>
 </dl>

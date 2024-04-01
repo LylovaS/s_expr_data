@@ -55,7 +55,10 @@ loadScripts(document, 'script');</script>
 <li><a href="ru/nsu/fit/lylova/data/package-tree.html">ru.nsu.fit.lylova.data</a>, </li>
 <li><a href="ru/nsu/fit/lylova/data/node/package-tree.html">ru.nsu.fit.lylova.data.node</a>, </li>
 <li><a href="ru/nsu/fit/lylova/path/package-tree.html">ru.nsu.fit.lylova.path</a>, </li>
-<li><a href="ru/nsu/fit/lylova/schema/package-tree.html">ru.nsu.fit.lylova.schema</a></li>
+<li><a href="ru/nsu/fit/lylova/path/step/package-tree.html">ru.nsu.fit.lylova.path.step</a>, </li>
+<li><a href="ru/nsu/fit/lylova/path/step/requirement/package-tree.html">ru.nsu.fit.lylova.path.step.requirement</a>, </li>
+<li><a href="ru/nsu/fit/lylova/schema/package-tree.html">ru.nsu.fit.lylova.schema</a>, </li>
+<li><a href="ru/nsu/fit/lylova/schema/node/package-tree.html">ru.nsu.fit.lylova.schema.node</a></li>
 </ul>
 </div>
 <section class="hierarchy">
@@ -70,9 +73,10 @@ loadScripts(document, 'script');</script>
 </ul>
 </li>
 <li class="circle">ru.nsu.fit.lylova.data.node.<a href="ru/nsu/fit/lylova/data/node/Attribute.html" class="type-name-link" title="class in ru.nsu.fit.lylova.data.node">Attribute</a></li>
+<li class="circle">ru.nsu.fit.lylova.path.<a href="ru/nsu/fit/lylova/path/Context.html" class="type-name-link" title="class in ru.nsu.fit.lylova.path">Context</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/DataBaseListener.html" class="type-name-link" title="class in ru.nsu.fit.lylova">DataBaseListener</a> (implements ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/DataListener.html" title="interface in ru.nsu.fit.lylova">DataListener</a>)</li>
 <li class="circle">ru.nsu.fit.lylova.data.<a href="ru/nsu/fit/lylova/data/DataReader.html" class="type-name-link" title="class in ru.nsu.fit.lylova.data">DataReader</a></li>
-<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/DataToSchemeTranslator.html" class="type-name-link" title="class in ru.nsu.fit.lylova">DataToSchemeTranslator</a></li>
+<li class="circle">ru.nsu.fit.lylova.schema.<a href="ru/nsu/fit/lylova/schema/DataToSchemeTranslator.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema">DataToSchemeTranslator</a></li>
 <li class="circle">ru.nsu.fit.lylova.data.<a href="ru/nsu/fit/lylova/data/DataWriter.html" class="type-name-link" title="class in ru.nsu.fit.lylova.data">DataWriter</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/Main.html" class="type-name-link" title="class in ru.nsu.fit.lylova">Main</a></li>
 <li class="circle">ru.nsu.fit.lylova.data.node.<a href="ru/nsu/fit/lylova/data/node/Node.html" class="type-name-link" title="class in ru.nsu.fit.lylova.data.node">Node</a>
@@ -83,8 +87,6 @@ loadScripts(document, 'script');</script>
 </li>
 <li class="circle">ru.nsu.fit.lylova.path.<a href="ru/nsu/fit/lylova/path/Path.html" class="type-name-link" title="class in ru.nsu.fit.lylova.path">Path</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathBaseListener.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathBaseListener</a> (implements ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathListener.html" title="interface in ru.nsu.fit.lylova">PathListener</a>)</li>
-<li class="circle">ru.nsu.fit.lylova.path.<a href="ru/nsu/fit/lylova/path/Predicate.html" class="type-name-link" title="class in ru.nsu.fit.lylova.path">Predicate</a></li>
-<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/Qname.html" class="type-name-link" title="class in ru.nsu.fit.lylova">Qname</a></li>
 <li class="circle">org.antlr.v4.runtime.Recognizer&lt;Symbol,<wbr>ATNInterpreter&gt;
 <ul>
 <li class="circle">org.antlr.v4.runtime.Lexer (implements org.antlr.v4.runtime.TokenSource)
@@ -101,6 +103,7 @@ loadScripts(document, 'script');</script>
 </li>
 </ul>
 </li>
+<li class="circle">ru.nsu.fit.lylova.path.step.requirement.<a href="ru/nsu/fit/lylova/path/step/requirement/Requirement.html" class="type-name-link" title="class in ru.nsu.fit.lylova.path.step.requirement">Requirement</a></li>
 <li class="circle">org.antlr.v4.runtime.RuleContext (implements org.antlr.v4.runtime.tree.RuleNode)
 <ul>
 <li class="circle">org.antlr.v4.runtime.ParserRuleContext
@@ -114,26 +117,33 @@ loadScripts(document, 'script');</script>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/DataParser.ValueContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">DataParser.ValueContext</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.AbbreviatedStepContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.AbbreviatedStepContext</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.AbsoluteLocationPathNorootContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.AbsoluteLocationPathNorootContext</a></li>
+<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.Attribute_exprContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.Attribute_exprContext</a></li>
+<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.CalcContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.CalcContext</a></li>
+<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.Custom_predicat_exprContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.Custom_predicat_exprContext</a></li>
+<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.Equal_pred_exprContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.Equal_pred_exprContext</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.ExprContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.ExprContext</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.LocationPathContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.LocationPathContext</a></li>
-<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.MainContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.MainContext</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.NCNameContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.NCNameContext</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.PredicateContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.PredicateContext</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.RelativeLocationPathContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.RelativeLocationPathContext</a></li>
 <li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.StepContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.StepContext</a></li>
+<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.StepSeparatorContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.StepSeparatorContext</a></li>
+<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/PathParser.TypeContext.html" class="type-name-link" title="class in ru.nsu.fit.lylova">PathParser.TypeContext</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="circle">ru.nsu.fit.lylova.schema.<a href="ru/nsu/fit/lylova/schema/SchemaAttribute.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema">SchemaAttribute</a></li>
-<li class="circle">ru.nsu.fit.lylova.schema.<a href="ru/nsu/fit/lylova/schema/SchemaNode.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema">SchemaNode</a>
+<li class="circle">ru.nsu.fit.lylova.schema.node.<a href="ru/nsu/fit/lylova/schema/node/SchemaAttribute.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema.node">SchemaAttribute</a></li>
+<li class="circle">ru.nsu.fit.lylova.schema.node.<a href="ru/nsu/fit/lylova/schema/node/SchemaNode.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema.node">SchemaNode</a>
 <ul>
-<li class="circle">ru.nsu.fit.lylova.schema.<a href="ru/nsu/fit/lylova/schema/SchemaElementNode.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema">SchemaElementNode</a></li>
-<li class="circle">ru.nsu.fit.lylova.schema.<a href="ru/nsu/fit/lylova/schema/SchemaValueNode.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema">SchemaValueNode</a></li>
+<li class="circle">ru.nsu.fit.lylova.schema.node.<a href="ru/nsu/fit/lylova/schema/node/SchemaElementNode.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema.node">SchemaElementNode</a></li>
+<li class="circle">ru.nsu.fit.lylova.schema.node.<a href="ru/nsu/fit/lylova/schema/node/SchemaValueNode.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema.node">SchemaValueNode</a></li>
 </ul>
 </li>
-<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/SchemaValidator.html" class="type-name-link" title="class in ru.nsu.fit.lylova">SchemaValidator</a></li>
-<li class="circle">ru.nsu.fit.lylova.path.<a href="ru/nsu/fit/lylova/path/Step.html" class="type-name-link" title="class in ru.nsu.fit.lylova.path">Step</a></li>
+<li class="circle">ru.nsu.fit.lylova.schema.<a href="ru/nsu/fit/lylova/schema/SchemaReader.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema">SchemaReader</a></li>
+<li class="circle">ru.nsu.fit.lylova.schema.<a href="ru/nsu/fit/lylova/schema/SchemaValidator.html" class="type-name-link" title="class in ru.nsu.fit.lylova.schema">SchemaValidator</a></li>
+<li class="circle">ru.nsu.fit.lylova.path.step.<a href="ru/nsu/fit/lylova/path/step/Step.html" class="type-name-link" title="class in ru.nsu.fit.lylova.path.step">Step</a></li>
+<li class="circle">ru.nsu.fit.lylova.<a href="ru/nsu/fit/lylova/Utils.html" class="type-name-link" title="class in ru.nsu.fit.lylova">Utils</a></li>
 <li class="circle">ru.nsu.fit.lylova.data.node.<a href="ru/nsu/fit/lylova/data/node/Value.html" class="type-name-link" title="class in ru.nsu.fit.lylova.data.node">Value</a></li>
 </ul>
 </li>
@@ -163,12 +173,13 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Enum.html" class="type-name-link external-link" title="class or interface in java.lang">Enum</a>&lt;E&gt; (implements java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html" title="class or interface in java.lang" class="external-link">Comparable</a>&lt;T&gt;, java.lang.constant.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/constant/Constable.html" title="class or interface in java.lang.constant" class="external-link">Constable</a>, java.io.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a>)
 <ul>
-<li class="circle">ru.nsu.fit.lylova.schema.<a href="ru/nsu/fit/lylova/schema/AttributeUse.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.schema">AttributeUse</a></li>
-<li class="circle">ru.nsu.fit.lylova.path.<a href="ru/nsu/fit/lylova/path/AxisType.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.path">AxisType</a></li>
+<li class="circle">ru.nsu.fit.lylova.schema.node.<a href="ru/nsu/fit/lylova/schema/node/AttributeUse.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.schema.node">AttributeUse</a></li>
+<li class="circle">ru.nsu.fit.lylova.path.step.<a href="ru/nsu/fit/lylova/path/step/AxisType.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.path.step">AxisType</a></li>
 <li class="circle">ru.nsu.fit.lylova.path.<a href="ru/nsu/fit/lylova/path/PathType.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.path">PathType</a></li>
-<li class="circle">ru.nsu.fit.lylova.path.<a href="ru/nsu/fit/lylova/path/PredicateType.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.path">PredicateType</a></li>
-<li class="circle">ru.nsu.fit.lylova.path.<a href="ru/nsu/fit/lylova/path/StepTransition.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.path">StepTransition</a></li>
-<li class="circle">ru.nsu.fit.lylova.schema.<a href="ru/nsu/fit/lylova/schema/ValueType.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.schema">ValueType</a></li>
+<li class="circle">ru.nsu.fit.lylova.path.step.requirement.<a href="ru/nsu/fit/lylova/path/step/requirement/PredicateType.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.path.step.requirement">PredicateType</a></li>
+<li class="circle">ru.nsu.fit.lylova.path.step.requirement.<a href="ru/nsu/fit/lylova/path/step/requirement/RequirementPartType.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.path.step.requirement">RequirementPartType</a></li>
+<li class="circle">ru.nsu.fit.lylova.path.step.<a href="ru/nsu/fit/lylova/path/step/StepTransition.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.path.step">StepTransition</a></li>
+<li class="circle">ru.nsu.fit.lylova.schema.node.<a href="ru/nsu/fit/lylova/schema/node/ValueType.html" class="type-name-link" title="enum class in ru.nsu.fit.lylova.schema.node">ValueType</a></li>
 </ul>
 </li>
 </ul>
