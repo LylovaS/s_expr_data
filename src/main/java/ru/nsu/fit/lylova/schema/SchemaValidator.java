@@ -1,12 +1,12 @@
-package ru.nsu.fit.lylova;
+package ru.nsu.fit.lylova.schema;
 
 import ru.nsu.fit.lylova.data.node.ElementNode;
 import ru.nsu.fit.lylova.data.node.Node;
 import ru.nsu.fit.lylova.data.node.ValueNode;
-import ru.nsu.fit.lylova.schema.SchemaAttribute;
-import ru.nsu.fit.lylova.schema.SchemaElementNode;
-import ru.nsu.fit.lylova.schema.SchemaNode;
-import ru.nsu.fit.lylova.schema.SchemaValueNode;
+import ru.nsu.fit.lylova.schema.node.SchemaAttribute;
+import ru.nsu.fit.lylova.schema.node.SchemaElementNode;
+import ru.nsu.fit.lylova.schema.node.SchemaNode;
+import ru.nsu.fit.lylova.schema.node.SchemaValueNode;
 
 public class SchemaValidator {
     public static boolean validate(Node data, SchemaNode schema) {

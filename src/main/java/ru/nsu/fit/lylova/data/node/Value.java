@@ -1,6 +1,6 @@
 package ru.nsu.fit.lylova.data.node;
 
-import ru.nsu.fit.lylova.schema.ValueType;
+import ru.nsu.fit.lylova.schema.node.ValueType;
 
 public class Value {
     private String string_value = null;

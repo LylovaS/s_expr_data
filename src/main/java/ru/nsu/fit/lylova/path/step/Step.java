@@ -1,10 +1,12 @@
-package ru.nsu.fit.lylova.path;
+package ru.nsu.fit.lylova.path.step;
+
+import ru.nsu.fit.lylova.path.step.requirement.Requirement;
 
 public class Step {
     private StepTransition transition;
     private AxisType axisType;
     private String elementName;
-    private Predicate predicate = null;
+    private Requirement requirement = null;
 
 
     public Step setTransition(StepTransition transition) {
@@ -19,11 +21,11 @@ public class Step {
     public Step(StepTransition transition, AxisType axisType) {
         this.transition = transition;
         this.axisType = axisType;
-        elementName = null;
+        this.elementName = null;
     }
 
     public Step(StepTransition transition, String elementName) {
-        this.elementName = elementName;
+        this.transition = transition;
         this.axisType = null;
         this.elementName = elementName;
     }
@@ -48,18 +50,18 @@ public class Step {
         return elementName;
     }
 
-    public Step setPredicate(String attributeName, String attributeValue, PredicateType type) {
-        predicate = new Predicate(attributeName, attributeValue, type);
+    public Step setRequirement(Requirement requirement) {
+        this.requirement = requirement;
         return this;
     }
 
-    public Predicate getPredicate() {
-        return predicate;
+    public Requirement getRequirement() {
+        return requirement;
     }
 
 
     public Step removePredicate() {
-        predicate = null;
+        requirement = null;
         return this;
     }
 }

@@ -1,7 +1,15 @@
 package ru.nsu.fit.lylova.path;
 
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import ru.nsu.fit.lylova.PathLexer;
+import ru.nsu.fit.lylova.PathParser;
 import ru.nsu.fit.lylova.data.node.ElementNode;
 import ru.nsu.fit.lylova.data.node.Node;
+import ru.nsu.fit.lylova.path.step.Step;
+import ru.nsu.fit.lylova.path.step.StepTransition;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -36,8 +44,9 @@ public class Path {
         steps.remove(index);
     }
 
-    public Collection<Node> evaluate(Node contextNode) {
+    public Collection<Node> evaluate(Context context) {
         Node imaginaryNode = null;
+        Node contextNode = context.getContextNode();
         if (contextNode == null) {
             throw new NullPointerException("parameter contextNode must not be null");
         }
@@ -46,9 +55,7 @@ public class Path {
         }
         Set<Node> result = new HashSet<>();
         switch (type) {
-            case RELATIVE -> {
-                result.add(contextNode);
-            }
+            case RELATIVE -> result.add(contextNode);
             case ABSOLUTE -> {
                 imaginaryNode = new DocumentNode("documentNode").addChildNode(findRootOfData(contextNode));
                 result.add(imaginaryNode);
@@ -69,10 +76,10 @@ public class Path {
             }
             result = nodesAfterAxis;
 
-            if (step.getPredicate() != null) {
+            if (step.getRequirement() != null) {
                 result = result.stream()
-                        .filter(node -> step.getPredicate()
-                                .validateNode(node))
+                        .filter(node -> step.getRequirement()
+                                .validateNode(node, context))
                         .collect(Collectors.toSet());
             }
         }
@@ -112,9 +119,7 @@ public class Path {
                     result.add(node.getParent());
                 }
             }
-            case CURRENT -> {
-                result.add(node);
-            }
+            case CURRENT -> result.add(node);
             case CHILD_ELEMENT -> {
                 if (!node.isElement()) {
                     return;
@@ -177,5 +182,16 @@ public class Path {
             node = node.getParent();
         }
         return node;
+    }
+
+    public static Path compile(String pathAsString) throws Exception {
+        PathLexer lexer = new PathLexer(CharStreams.fromString(pathAsString));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        PathParser parser = new PathParser(tokens);
+        ParseTree tree = parser.calc();
+        ParseTreeWalker walker = new ParseTreeWalker();
+        PathWalker pathWalker = new PathWalker();
+        walker.walk(pathWalker, tree);
+        return pathWalker.getPath();
     }
 }

@@ -1,6 +1,6 @@
 grammar Path;
 
-main
+calc
     : locationPath EOF
     ;
 
@@ -15,15 +15,26 @@ absoluteLocationPathNoroot
     ;
 
 relativeLocationPath
-    : step (('/' | '//') step)*
+    : step (stepSeparator step)*
+    ;
+
+stepSeparator
+    : '/'
+    | '//'
+    ;
+
+type
+    : '@element'
+    | '@value'
     ;
 
 step
     : nCName predicate?
     | abbreviatedStep predicate?
-    | '@element' predicate?
-    | '@value' predicate?
+    | type predicate?
     ;
+
+
 
 predicate
     : '[' expr ']'
@@ -35,7 +46,21 @@ abbreviatedStep
     ;
 
 expr
-    : '@' nCName ('=' | '!=') STRING
+    : equal_pred_expr
+    | custom_predicat_expr
+    ;
+
+equal_pred_expr:
+    attribute_expr ('=' | '!=') attribute_expr
+    ;
+
+custom_predicat_expr:
+    NAME '('  attribute_expr ',' attribute_expr ')'
+    ;
+
+attribute_expr:
+    '@' nCName
+    | STRING
     ;
 
 nCName

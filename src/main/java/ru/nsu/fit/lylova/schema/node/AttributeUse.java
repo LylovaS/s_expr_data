@@ -1,4 +1,4 @@
-package ru.nsu.fit.lylova.schema;
+package ru.nsu.fit.lylova.schema.node;
 
 public enum AttributeUse {
     OPTIONAL,

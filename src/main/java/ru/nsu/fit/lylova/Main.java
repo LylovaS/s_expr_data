@@ -1,18 +1,19 @@
 package ru.nsu.fit.lylova;
 
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import ru.nsu.fit.lylova.data.DataReader;
+import ru.nsu.fit.lylova.data.DataWriter;
 import ru.nsu.fit.lylova.data.node.*;
-import ru.nsu.fit.lylova.schema.SchemaAttribute;
-import ru.nsu.fit.lylova.schema.SchemaElementNode;
-import ru.nsu.fit.lylova.schema.SchemaNode;
-import ru.nsu.fit.lylova.schema.SchemaValueNode;
+import ru.nsu.fit.lylova.path.Context;
+import ru.nsu.fit.lylova.path.Path;
+import ru.nsu.fit.lylova.schema.DataToSchemeTranslator;
+import ru.nsu.fit.lylova.schema.SchemaValidator;
+import ru.nsu.fit.lylova.schema.node.SchemaAttribute;
+import ru.nsu.fit.lylova.schema.node.SchemaElementNode;
+import ru.nsu.fit.lylova.schema.node.SchemaNode;
+import ru.nsu.fit.lylova.schema.node.SchemaValueNode;
 
 import java.io.FileReader;
-import java.io.IOException;
+import java.io.StringWriter;
 
 public class Main {
     static private void showTheData(Node node, String prefix) {
@@ -39,6 +40,7 @@ public class Main {
         if (node.isElement()) {
             SchemaElementNode schemaElementNode = (SchemaElementNode) node;
             System.out.print("element " + schemaElementNode.getName());
+            System.out.print(" count=[" + node.getMinOccurs() + "," + node.getMaxOccurs() + "]");
             for (SchemaAttribute attr : schemaElementNode.getAttributes()) {
                 System.out.print(" " + "attr" + "=" + attr.getName());
             }
@@ -50,18 +52,38 @@ public class Main {
         } else {
             SchemaValueNode schemaValueNode = (SchemaValueNode) node;
             System.out.print("value " + schemaValueNode.getType().toString());
+            System.out.print(" count=[" + node.getMinOccurs() + "," + node.getMaxOccurs() + "]");
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
-        Node dataNode = DataReader.parseDataFromReader(new FileReader("data.txt"));
-
-        System.out.println(dataNode.isElement());
+        Node dataNode = DataReader.parseData(new FileReader("data.txt"));
         showTheData(dataNode, "");
+        System.out.println();
 
-//        DataToSchemeTranslator translator = new DataToSchemeTranslator();
-//        SchemaElementNode node = (SchemaElementNode) translator.translate(expressionWalker.getDataNode());
-//        showTheData(node, "");
+        SchemaNode schemaNode = DataToSchemeTranslator.translate(DataReader.parseData(new FileReader("schema.txt")));
+
+        showTheData(schemaNode, "");
+        System.out.println();
+        if (SchemaValidator.validate(dataNode, schemaNode)) {
+            System.out.println("Data is ok");
+        } else {
+            System.out.println("Data ne ok");
+        }
+
+        Node node2 = DataReader.parseDataWithSchema(new FileReader("data.txt"), new FileReader("schema.txt"));
+        showTheData(node2, "");
+
+        StringWriter writer = new StringWriter();
+        DataWriter.writeToWriter(writer, dataNode);
+        System.out.println(writer);
+
+        Path path = Path.compile("//school[@name = \"Gymnasium 6\"]//@value");
+        var res = path.evaluate(new Context(dataNode));
+        System.out.println(res.size());
+        for (Node i : res) {
+            showTheData(i, "");
+        }
     }
 }

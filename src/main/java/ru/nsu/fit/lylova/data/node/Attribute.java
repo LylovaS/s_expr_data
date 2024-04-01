@@ -4,12 +4,14 @@ public class Attribute {
     private String value = null;
     private String name = null;
 
-    public void setName(String name) {
+    public Attribute setName(String name) {
         this.name = name;
+        return this;
     }
 
-    public void setValue(String value) {
+    public Attribute setValue(String value) {
         this.value = value;
+        return this;
     }
 
     public String getName() {
