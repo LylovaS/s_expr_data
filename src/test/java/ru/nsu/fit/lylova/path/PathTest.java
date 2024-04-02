@@ -11,7 +11,6 @@ import ru.nsu.fit.lylova.path.step.requirement.PredicateType;
 import ru.nsu.fit.lylova.path.step.requirement.RequirementPartType;
 
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PathTest {
 
     @Test
-    void evaluate() throws IOException {
+    void evaluate() throws Exception {
         Node node = DataReader.parseData(new FileReader("src/test/resources/data1.txt"));
         Context context = new Context(node);
         // path="element"
@@ -35,6 +34,19 @@ class PathTest {
         res = path.evaluate(context);
         List<String> correctResult = new LinkedList<>(Arrays.asList("2", "5"));
         assertEquals(2, res.size());
+        for (Node i : res) {
+            assertTrue(i.isElement());
+            String id = ((ElementNode) i).getAttributeByName("id").getValue();
+            assertTrue(correctResult.contains(id));
+            correctResult.remove(id);
+        }
+        assertTrue(correctResult.isEmpty());
+
+        path = Path.compile("//*[func(@id, \"1\")]");
+        context.addPredicate("func", (str1, str2) -> str1.equals("3") || str1.equals("5"));
+        res = path.evaluate(context);
+        correctResult = new LinkedList<>(Arrays.asList("3", "5"));
+        assertEquals(correctResult.size(), res.size());
         for (Node i : res) {
             assertTrue(i.isElement());
             String id = ((ElementNode) i).getAttributeByName("id").getValue();
