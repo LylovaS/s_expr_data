@@ -5,7 +5,7 @@ import ru.nsu.fit.lylova.data.DataWriter;
 import ru.nsu.fit.lylova.data.node.*;
 import ru.nsu.fit.lylova.path.Context;
 import ru.nsu.fit.lylova.path.Path;
-import ru.nsu.fit.lylova.schema.DataToSchemeTranslator;
+import ru.nsu.fit.lylova.schema.SchemaReader;
 import ru.nsu.fit.lylova.schema.SchemaValidator;
 import ru.nsu.fit.lylova.schema.node.SchemaAttribute;
 import ru.nsu.fit.lylova.schema.node.SchemaElementNode;
@@ -13,7 +13,9 @@ import ru.nsu.fit.lylova.schema.node.SchemaNode;
 import ru.nsu.fit.lylova.schema.node.SchemaValueNode;
 
 import java.io.FileReader;
-import java.io.StringWriter;
+import java.io.FileWriter;
+import java.io.Writer;
+import java.util.Collection;
 
 public class Main {
     static private void showTheData(Node node, String prefix) {
@@ -58,32 +60,30 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Node dataNode = DataReader.parseData(new FileReader("data.txt"));
+        Node dataNode = DataReader.parseDataWithSchema(new FileReader("data.txt"), new FileReader("schema.txt"));
         showTheData(dataNode, "");
         System.out.println();
 
-        SchemaNode schemaNode = DataToSchemeTranslator.translate(DataReader.parseData(new FileReader("schema.txt")));
-
-        showTheData(schemaNode, "");
-        System.out.println();
+        SchemaNode schemaNode = SchemaReader.parseSchema(new FileReader("schema.txt"));
         if (SchemaValidator.validate(dataNode, schemaNode)) {
             System.out.println("Data is ok");
         } else {
             System.out.println("Data ne ok");
         }
 
-        Node node2 = DataReader.parseDataWithSchema(new FileReader("data.txt"), new FileReader("schema.txt"));
-        showTheData(node2, "");
-
-        StringWriter writer = new StringWriter();
-        DataWriter.writeToWriter(writer, dataNode);
-        System.out.println(writer);
-
-        Path path = Path.compile("//school[@name = \"Gymnasium 6\"]//@value");
-        var res = path.evaluate(new Context(dataNode));
-        System.out.println(res.size());
+        Path path = Path.compile("//school[contains(@name, \"Gymnasium\")]//@value");
+        Context context = new Context(dataNode).addPredicate("contains", String::contains);
+        Collection<Node> res = path.evaluate(context);
+        int n = 0;
         for (Node i : res) {
-            showTheData(i, "");
+            ++n;
+            System.out.println(n + ": ");
+            showTheData(i, "   ");
+        }
+
+        dataNode = ((ElementNode) dataNode).setName("location");
+        try (Writer writer = new FileWriter("changed_data.txt")) {
+            DataWriter.writeToWriter(writer, dataNode);
         }
     }
 }

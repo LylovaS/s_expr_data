@@ -1,0 +1,18 @@
+(location {name "Sovetsky", city "Novosibirsk"}
+	(school {name "Gymnasium 6"}
+		(grade {level "9th"}
+			"9G" 
+			"9E" 
+		)
+		(grade {level "10th"}
+			"10A" 
+			"10B" 
+		)
+	)
+	(school {name "Gymnasium 5"}
+		(grade {level "11th"}
+			"11A" 
+			"11B" 
+		)
+	)
+)
