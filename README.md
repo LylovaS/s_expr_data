@@ -212,8 +212,8 @@ minOccurs и maxOccurs должны быть определены вместе �
 
 ### Примеры запросов
 ```
-\\el\*[@id=@id2]
-@element\..\*\\name[func("asda", "sada")]
-\\@value[type="int"]
-\div\a\@value[type="string"]
+//el/*[@id=@id2]
+@element/../*//name[func("asda", "sada")]
+//@value[type="int"]
+/div/a/@value[type="string"]
 ```
