@@ -105,6 +105,9 @@ public class Requirement {
             }
             if (rightPartType == RequirementPartType.ATTR_NAME) {
                 if (!rightPart.equals("*")) {
+                    if (attributes.get(rightPart) == null) {
+                        return false;
+                    }
                     return predicate.apply(leftPart, attributes.get(rightPart));
                 }
                 boolean result = false;
@@ -117,6 +120,9 @@ public class Requirement {
         if (leftPartType == RequirementPartType.ATTR_NAME) {
             if (rightPartType == RequirementPartType.VALUE) {
                 if (!leftPart.equals("*")) {
+                    if (attributes.get(leftPart) == null) {
+                        return false;
+                    }
                     return predicate.apply(attributes.get(leftPart), rightPart);
                 }
                 boolean result = false;
@@ -127,7 +133,13 @@ public class Requirement {
             }
             if (rightPartType == RequirementPartType.ATTR_NAME) {
                 if (!leftPart.equals("*")) {
+                    if (attributes.get(leftPart) == null) {
+                        return false;
+                    }
                     if (!rightPart.equals("*")) {
+                        if (attributes.get(rightPart) == null) {
+                            return false;
+                        }
                         return predicate.apply(attributes.get(leftPart), attributes.get(rightPart));
                     } else {
                         boolean result = false;
@@ -138,6 +150,9 @@ public class Requirement {
                     }
                 } else {
                     if (!rightPart.equals("*")) {
+                        if (attributes.get(rightPart) == null) {
+                            return false;
+                        }
                         boolean result = false;
                         for (String i: attributes.values()) {
                             result |= predicate.apply(i, attributes.get(rightPart));
